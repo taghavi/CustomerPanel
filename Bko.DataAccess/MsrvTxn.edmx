@@ -1,0 +1,612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MSrvTxnModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AC_Journal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="TypeCode" Type="tinyint" Nullable="false" />
+          <Property Name="StatusCode" Type="tinyint" Nullable="false" />
+          <Property Name="ReferenceId" Type="bigint" />
+          <Property Name="JournalDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AC_JournalDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JournalId" Type="bigint" Nullable="false" />
+          <Property Name="AccountId" Type="bigint" Nullable="false" />
+          <Property Name="TxnAmount" Type="decimal" Precision="21" Scale="0" Nullable="false" />
+          <Property Name="BalanceAmount" Type="decimal" Precision="21" Scale="0" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Txn_BusinessDate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BusinessDate" Type="datetime" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Txn_Error">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrorCode" Type="int" Nullable="false" />
+          <Property Name="BId" Type="bigint" />
+          <Property Name="ApiId" Type="tinyint" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReserveNumber" Type="bigint" />
+          <Property Name="ReferenceNumber" Type="bigint" />
+          <Property Name="TotalAmount" Type="decimal" Precision="21" Scale="0" />
+          <Property Name="CellNumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="NumberList" Type="nvarchar" MaxLength="150" />
+          <Property Name="AmountList" Type="nvarchar" MaxLength="150" />
+          <Property Name="LocalDateTime" Type="datetime" />
+          <Property Name="AddData" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Txn_Info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TxnType" Type="int" Nullable="false" />
+          <Property Name="PrCode" Type="int" Nullable="false" />
+          <Property Name="FwPrCode" Type="int" />
+          <Property Name="BId" Type="bigint" Nullable="false" />
+          <Property Name="LocalDate_TX" Type="datetime" />
+          <Property Name="LocalDate_Rx" Type="datetime" />
+          <Property Name="RequestDate" Type="datetime" Nullable="false" />
+          <Property Name="BusinessDate" Type="datetime" Nullable="false" />
+          <Property Name="LocalSerial" Type="bigint" />
+          <Property Name="RequestSerial" Type="bigint" />
+          <Property Name="OriginalAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AffectiveAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FwBId" Type="bigint" Nullable="false" />
+          <Property Name="RefrenceNumber" Type="bigint" />
+          <Property Name="FWRefNo" Type="bigint" />
+          <Property Name="ResponseCode" Type="int" />
+          <Property Name="ResponseMsg" Type="nvarchar(max)" />
+          <Property Name="TxStatus" Type="tinyint" />
+          <Property Name="AddData1" Type="nvarchar" MaxLength="2000" />
+          <Property Name="AddData2" Type="nvarchar" MaxLength="2000" />
+          <Property Name="AddData3" Type="nvarchar" MaxLength="2000" />
+          <Property Name="AddDate" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="OperatorId" Type="tinyint" />
+          <Property Name="JournalId" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Txn_Queue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="MTI" Type="int" Nullable="false" />
+          <Property Name="PrCode" Type="int" Nullable="false" />
+          <Property Name="JournalId" Type="bigint" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="ScheduleTime" Type="datetime" Nullable="false" />
+          <Property Name="TryCount" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Txn_SystemInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TxnDate" Type="datetime" Nullable="false" />
+          <Property Name="TxnMonth" Type="tinyint" Nullable="false" />
+          <Property Name="BId" Type="bigint" Nullable="false" />
+          <Property Name="TopUpCount" Type="int" Nullable="false" />
+          <Property Name="TopUpSum" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MCICount" Type="int" Nullable="false" />
+          <Property Name="MCISum" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MTNCount" Type="int" Nullable="false" />
+          <Property Name="MTNSum" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="RightelCount" Type="int" Nullable="false" />
+          <Property Name="RightelSum" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="BillCount" Type="int" Nullable="false" />
+          <Property Name="BillSum" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PinChargeCount" Type="int" Nullable="false" />
+          <Property Name="PinChargeSum" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FailedCount" Type="int" Nullable="false" />
+          <Property Name="TotalRequest" Type="int" Nullable="false" />
+          <Property Name="LastTxnDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Function Name="SP_Rep_Check" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tbl" Type="tinyint" Mode="In" />
+          <Parameter Name="CellNUmber" Type="nvarchar" Mode="In" />
+          <Parameter Name="ResponseCode" Type="varchar(max)" Mode="In" />
+          <Parameter Name="PrCode" Type="varchar" Mode="In" />
+          <Parameter Name="id" Type="varchar(max)" Mode="In" />
+          <Parameter Name="RefrenceNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="LocalSerial" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ReserveNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="bid" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Date" Type="varchar" Mode="In" />
+          <Parameter Name="TxStatus" Type="char" Mode="In" />
+          <Parameter Name="where" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="OrderBy" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FWRef" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="PageNumber" Type="int" Mode="In" />
+          <Parameter Name="RowspPage" Type="int" Mode="In" />
+          <Parameter Name="Operatorid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Sales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Level" Type="char" Mode="In" />
+          <Parameter Name="AccountID" Type="varchar" Mode="In" />
+          <Parameter Name="OperatorId" Type="char" Mode="In" />
+          <Parameter Name="FromDate" Type="varchar" Mode="In" />
+          <Parameter Name="ToDate" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_Sales_Detail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AccountID" Type="varchar" Mode="In" />
+          <Parameter Name="OperatorId" Type="char" Mode="In" />
+          <Parameter Name="OriginalAmount" Type="varchar" Mode="In" />
+          <Parameter Name="FromDate" Type="varchar" Mode="In" />
+          <Parameter Name="ToDate" Type="varchar" Mode="In" />
+          <Parameter Name="OrderBy" Type="varchar(max)" Mode="In" />
+          <Parameter Name="PageNumber" Type="int" Mode="In" />
+          <Parameter Name="RowspPage" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="MSrvTxnModelStoreContainer">
+          <EntitySet Name="AC_Journal" EntityType="Self.AC_Journal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AC_JournalDetail" EntityType="Self.AC_JournalDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Txn_BusinessDate" EntityType="Self.Txn_BusinessDate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Txn_Error" EntityType="Self.Txn_Error" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Txn_Info" EntityType="Self.Txn_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Txn_Queue" EntityType="Self.Txn_Queue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Txn_SystemInfo" EntityType="Self.Txn_SystemInfo" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MSrvTxnModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AC_Journal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeCode" Type="Byte" Nullable="false" />
+          <Property Name="StatusCode" Type="Byte" Nullable="false" />
+          <Property Name="ReferenceId" Type="Int64" />
+          <Property Name="JournalDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="AC_JournalDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JournalId" Type="Int64" Nullable="false" />
+          <Property Name="AccountId" Type="Int64" Nullable="false" />
+          <Property Name="TxnAmount" Type="Decimal" Precision="21" Scale="0" Nullable="false" />
+          <Property Name="BalanceAmount" Type="Decimal" Precision="21" Scale="0" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Txn_BusinessDate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BusinessDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Txn_Error">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorCode" Type="Int32" Nullable="false" />
+          <Property Name="BId" Type="Int64" />
+          <Property Name="ApiId" Type="Byte" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReserveNumber" Type="Int64" />
+          <Property Name="ReferenceNumber" Type="Int64" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="21" Scale="0" />
+          <Property Name="CellNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NumberList" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AmountList" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LocalDateTime" Type="DateTime" Precision="3" />
+          <Property Name="AddData" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Txn_Info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TxnType" Type="Int32" Nullable="false" />
+          <Property Name="PrCode" Type="Int32" Nullable="false" />
+          <Property Name="FwPrCode" Type="Int32" />
+          <Property Name="BId" Type="Int64" Nullable="false" />
+          <Property Name="LocalDate_TX" Type="DateTime" Precision="3" />
+          <Property Name="LocalDate_Rx" Type="DateTime" Precision="3" />
+          <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BusinessDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LocalSerial" Type="Int64" />
+          <Property Name="RequestSerial" Type="Int64" />
+          <Property Name="OriginalAmount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AffectiveAmount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FwBId" Type="Int64" Nullable="false" />
+          <Property Name="RefrenceNumber" Type="Int64" />
+          <Property Name="FWRefNo" Type="Int64" />
+          <Property Name="ResponseCode" Type="Int32" />
+          <Property Name="ResponseMsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TxStatus" Type="Byte" />
+          <Property Name="AddData1" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="AddData2" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="AddData3" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="AddDate" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OperatorId" Type="Byte" />
+          <Property Name="JournalId" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Txn_Queue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="MTI" Type="Int32" Nullable="false" />
+          <Property Name="PrCode" Type="Int32" Nullable="false" />
+          <Property Name="JournalId" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="ScheduleTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="TryCount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Txn_SystemInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TxnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TxnMonth" Type="Byte" Nullable="false" />
+          <Property Name="BId" Type="Int64" Nullable="false" />
+          <Property Name="TopUpCount" Type="Int32" Nullable="false" />
+          <Property Name="TopUpSum" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MCICount" Type="Int32" Nullable="false" />
+          <Property Name="MCISum" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MTNCount" Type="Int32" Nullable="false" />
+          <Property Name="MTNSum" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="RightelCount" Type="Int32" Nullable="false" />
+          <Property Name="RightelSum" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="BillCount" Type="Int32" Nullable="false" />
+          <Property Name="BillSum" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PinChargeCount" Type="Int32" Nullable="false" />
+          <Property Name="PinChargeSum" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FailedCount" Type="Int32" Nullable="false" />
+          <Property Name="TotalRequest" Type="Int32" Nullable="false" />
+          <Property Name="LastTxnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="MSrvTxnEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AC_Journal" EntityType="Self.AC_Journal" />
+          <EntitySet Name="AC_JournalDetail" EntityType="Self.AC_JournalDetail" />
+          <EntitySet Name="Txn_BusinessDate" EntityType="Self.Txn_BusinessDate" />
+          <EntitySet Name="Txn_Error" EntityType="Self.Txn_Error" />
+          <EntitySet Name="Txn_Info" EntityType="Self.Txn_Info" />
+          <EntitySet Name="Txn_Queue" EntityType="Self.Txn_Queue" />
+          <EntitySet Name="Txn_SystemInfo" EntityType="Self.Txn_SystemInfo" />
+          <FunctionImport Name="SpJournalInsert" ReturnType="Collection(Int64)">
+            <Parameter Name="JournalReferenceID" Mode="In" Type="Int64" />
+            <Parameter Name="JournalIdentifier" Mode="In" Type="Int32" />
+            <Parameter Name="JournalTitle" Mode="In" Type="String" />
+            <Parameter Name="JournalStatusCode" Mode="In" Type="Int32" />
+            <Parameter Name="JournalTypeCode" Mode="In" Type="Int32" />
+            <Parameter Name="JournalDate" Mode="In" Type="DateTime" />
+            <Parameter Name="JournalDetails" Mode="In" Type="String" />
+            <Parameter Name="TxnId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SpJournalInsert1" ReturnType="Collection(Int64)">
+            <Parameter Name="JournalReferenceID" Mode="In" Type="Int64" />
+            <Parameter Name="JournalIdentifier" Mode="In" Type="Int32" />
+            <Parameter Name="JournalTitle" Mode="In" Type="String" />
+            <Parameter Name="JournalStatusCode" Mode="In" Type="Int32" />
+            <Parameter Name="JournalTypeCode" Mode="In" Type="Int32" />
+            <Parameter Name="JournalDate" Mode="In" Type="DateTime" />
+            <Parameter Name="JournalDetails" Mode="In" Type="String" />
+            <Parameter Name="TxnId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Rep_Check">
+            <Parameter Name="tbl" Mode="In" Type="Byte" />
+            <Parameter Name="CellNUmber" Mode="In" Type="String" />
+            <Parameter Name="ResponseCode" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="RefrenceNumber" Mode="In" Type="String" />
+            <Parameter Name="ReserveNumber" Mode="In" Type="String" />
+            <Parameter Name="bid" Mode="In" Type="String" />
+            <Parameter Name="Date" Mode="In" Type="String" />
+            <Parameter Name="TxStatus" Mode="In" Type="String" />
+            <Parameter Name="where" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Sales" ReturnType="Collection(MSrvTxnModel.SpSalesModel)">
+            <Parameter Name="Level" Mode="In" Type="String" />
+            <Parameter Name="AccountID" Mode="In" Type="String" />
+            <Parameter Name="OperatorId" Mode="In" Type="String" />
+            <Parameter Name="FromDate" Mode="In" Type="String" />
+            <Parameter Name="ToDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Sales_Detail" ReturnType="Collection(MSrvTxnModel.SpSalesDetailModel)">
+            <Parameter Name="AccountID" Mode="In" Type="String" />
+            <Parameter Name="OperatorId" Mode="In" Type="String" />
+            <Parameter Name="OriginalAmount" Mode="In" Type="String" />
+            <Parameter Name="FromDate" Mode="In" Type="String" />
+            <Parameter Name="ToDate" Mode="In" Type="String" />
+            <Parameter Name="OrderBy" Mode="In" Type="String" />
+            <Parameter Name="PageNumber" Mode="In" Type="Int32" />
+            <Parameter Name="RowspPage" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Rep_Check1">
+            <Parameter Name="tbl" Mode="In" Type="Byte" />
+            <Parameter Name="CellNUmber" Mode="In" Type="String" />
+            <Parameter Name="ResponseCode" Mode="In" Type="String" />
+            <Parameter Name="PrCode" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="RefrenceNumber" Mode="In" Type="String" />
+            <Parameter Name="LocalSerial" Mode="In" Type="String" />
+            <Parameter Name="ReserveNumber" Mode="In" Type="String" />
+            <Parameter Name="bid" Mode="In" Type="String" />
+            <Parameter Name="Date" Mode="In" Type="String" />
+            <Parameter Name="TxStatus" Mode="In" Type="String" />
+            <Parameter Name="where" Mode="In" Type="String" />
+            <Parameter Name="OrderBy" Mode="In" Type="String" />
+            <Parameter Name="FWRef" Mode="In" Type="String" />
+            <Parameter Name="PageNumber" Mode="In" Type="Int32" />
+            <Parameter Name="RowspPage" Mode="In" Type="Int32" />
+            <Parameter Name="Operatorid" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SpSalesModel" >
+          <Property Type="Decimal" Name="Amount" Nullable="false" />
+          <Property Type="Int64" Name="AccountID" Nullable="false" />
+          <Property Type="String" Name="Customer" Nullable="true" />
+          <Property Type="Decimal" Name="BalanceAmount" Nullable="true" />
+          <Property Type="Int32" Name="Count" Nullable="true" />
+          <Property Type="Byte" Name="OperatorId" Nullable="true" />
+          <Property Type="Decimal" Name="OriginalAmount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SpSalesDetailModel" >
+          <Property Type="Int64" Name="AccountID" Nullable="true" />
+          <Property Type="String" Name="Customer" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="true" />
+          <Property Type="Byte" Name="OperatorId" Nullable="true" />
+          <Property Type="Decimal" Name="OriginalAmount" Nullable="true" />
+          <Property Type="Int32" Name="Count" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" />
+          <Property Type="String" Name="ChargeType" Nullable="true" />
+          <Property Type="String" Name="OperatorTitle" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RepCheckModel" >
+          <Property Type="String" Name="TBL_Name" Nullable="false" />
+          <Property Type="Int64" Name="Id" />
+          <Property Type="Int64" Name="BId" Nullable="false" />
+          <Property Type="String" Name="TitleFa" Nullable="false" />
+          <Property Type="Decimal" Name="OriginalAmount" Nullable="false" />
+          <Property Type="Int64" Name="FwBId" Nullable="true" />
+          <Property Type="Int64" Name="RequestSerial" Nullable="true" />
+          <Property Type="Int64" Name="RefrenceNumber" Nullable="true" />
+          <Property Type="Int64" Name="LocalSerial" Nullable="true" />
+          <Property Type="Int32" Name="ResponseCode" Nullable="true" />
+          <Property Type="String" Name="ResponseMsg" Nullable="false" />
+          <Property Type="Int16" Name="TxStatus" Nullable="true" />
+          <Property Type="String" Name="AddData1" Nullable="false" />
+          <Property Type="String" Name="AddData2" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="false" />
+          <Property Type="Int16" Name="OperatorId" Nullable="true" />
+          <Property Type="String" Name="OperatorTitle" Nullable="false" />
+          <Property Type="DateTime" Name="RequestDate" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" />
+          <Property Type="DateTime" Name="LocalDate_TX" Nullable="true" />
+          <Property Type="DateTime" Name="LocalDate_RX" Nullable="true" />
+          <Property Type="Int64" Name="journalId" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MSrvTxnModelStoreContainer" CdmEntityContainer="MSrvTxnEntities">
+          <EntitySetMapping Name="AC_Journal">
+            <EntityTypeMapping TypeName="MSrvTxnModel.AC_Journal">
+              <MappingFragment StoreEntitySet="AC_Journal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
+                <ScalarProperty Name="JournalDate" ColumnName="JournalDate" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AC_JournalDetail">
+            <EntityTypeMapping TypeName="MSrvTxnModel.AC_JournalDetail">
+              <MappingFragment StoreEntitySet="AC_JournalDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="JournalId" ColumnName="JournalId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="TxnAmount" ColumnName="TxnAmount" />
+                <ScalarProperty Name="BalanceAmount" ColumnName="BalanceAmount" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Txn_BusinessDate">
+            <EntityTypeMapping TypeName="MSrvTxnModel.Txn_BusinessDate">
+              <MappingFragment StoreEntitySet="Txn_BusinessDate">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="BusinessDate" ColumnName="BusinessDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Txn_Error">
+            <EntityTypeMapping TypeName="MSrvTxnModel.Txn_Error">
+              <MappingFragment StoreEntitySet="Txn_Error">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="ApiId" ColumnName="ApiId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ReserveNumber" ColumnName="ReserveNumber" />
+                <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="CellNumber" ColumnName="CellNumber" />
+                <ScalarProperty Name="NumberList" ColumnName="NumberList" />
+                <ScalarProperty Name="AmountList" ColumnName="AmountList" />
+                <ScalarProperty Name="LocalDateTime" ColumnName="LocalDateTime" />
+                <ScalarProperty Name="AddData" ColumnName="AddData" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Txn_Info">
+            <EntityTypeMapping TypeName="MSrvTxnModel.Txn_Info">
+              <MappingFragment StoreEntitySet="Txn_Info">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TxnType" ColumnName="TxnType" />
+                <ScalarProperty Name="PrCode" ColumnName="PrCode" />
+                <ScalarProperty Name="FwPrCode" ColumnName="FwPrCode" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="LocalDate_TX" ColumnName="LocalDate_TX" />
+                <ScalarProperty Name="LocalDate_Rx" ColumnName="LocalDate_Rx" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="BusinessDate" ColumnName="BusinessDate" />
+                <ScalarProperty Name="LocalSerial" ColumnName="LocalSerial" />
+                <ScalarProperty Name="RequestSerial" ColumnName="RequestSerial" />
+                <ScalarProperty Name="OriginalAmount" ColumnName="OriginalAmount" />
+                <ScalarProperty Name="AffectiveAmount" ColumnName="AffectiveAmount" />
+                <ScalarProperty Name="FwBId" ColumnName="FwBId" />
+                <ScalarProperty Name="RefrenceNumber" ColumnName="RefrenceNumber" />
+                <ScalarProperty Name="FWRefNo" ColumnName="FWRefNo" />
+                <ScalarProperty Name="ResponseCode" ColumnName="ResponseCode" />
+                <ScalarProperty Name="ResponseMsg" ColumnName="ResponseMsg" />
+                <ScalarProperty Name="TxStatus" ColumnName="TxStatus" />
+                <ScalarProperty Name="AddData1" ColumnName="AddData1" />
+                <ScalarProperty Name="AddData2" ColumnName="AddData2" />
+                <ScalarProperty Name="AddData3" ColumnName="AddData3" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+                <ScalarProperty Name="JournalId" ColumnName="JournalId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Txn_Queue">
+            <EntityTypeMapping TypeName="MSrvTxnModel.Txn_Queue">
+              <MappingFragment StoreEntitySet="Txn_Queue">
+                <ScalarProperty Name="TryCount" ColumnName="TryCount" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MTI" ColumnName="MTI" />
+                <ScalarProperty Name="PrCode" ColumnName="PrCode" />
+                <ScalarProperty Name="JournalId" ColumnName="JournalId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ScheduleTime" ColumnName="ScheduleTime" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Txn_SystemInfo">
+            <EntityTypeMapping TypeName="MSrvTxnModel.Txn_SystemInfo">
+              <MappingFragment StoreEntitySet="Txn_SystemInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TxnDate" ColumnName="TxnDate" />
+                <ScalarProperty Name="TxnMonth" ColumnName="TxnMonth" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="TopUpCount" ColumnName="TopUpCount" />
+                <ScalarProperty Name="TopUpSum" ColumnName="TopUpSum" />
+                <ScalarProperty Name="MCICount" ColumnName="MCICount" />
+                <ScalarProperty Name="MCISum" ColumnName="MCISum" />
+                <ScalarProperty Name="MTNCount" ColumnName="MTNCount" />
+                <ScalarProperty Name="MTNSum" ColumnName="MTNSum" />
+                <ScalarProperty Name="RightelCount" ColumnName="RightelCount" />
+                <ScalarProperty Name="RightelSum" ColumnName="RightelSum" />
+                <ScalarProperty Name="BillCount" ColumnName="BillCount" />
+                <ScalarProperty Name="BillSum" ColumnName="BillSum" />
+                <ScalarProperty Name="PinChargeCount" ColumnName="PinChargeCount" />
+                <ScalarProperty Name="PinChargeSum" ColumnName="PinChargeSum" />
+                <ScalarProperty Name="FailedCount" ColumnName="FailedCount" />
+                <ScalarProperty Name="TotalRequest" ColumnName="TotalRequest" />
+                <ScalarProperty Name="LastTxnDate" ColumnName="LastTxnDate" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Sales" FunctionName="MSrvTxnModel.Store.Sp_Sales" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MSrvTxnModel.SpSalesModel">
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Sales_Detail" FunctionName="MSrvTxnModel.Store.SP_Sales_Detail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MSrvTxnModel.SpSalesDetailModel">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+                <ScalarProperty Name="OriginalAmount" ColumnName="OriginalAmount" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ChargeType" ColumnName="ChargeType" />
+                <ScalarProperty Name="OperatorTitle" ColumnName="OperatorTitle" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Rep_Check1" FunctionName="MSrvTxnModel.Store.SP_Rep_Check" />
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

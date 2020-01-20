@@ -1,0 +1,555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountId" xml:space="preserve">
+    <value>حساب</value>
+  </data>
+  <data name="AC_Account" xml:space="preserve">
+    <value>حساب</value>
+  </data>
+  <data name="AC_Journal" xml:space="preserve">
+    <value>سند</value>
+  </data>
+  <data name="AddData" xml:space="preserve">
+    <value>داده اضافه</value>
+  </data>
+  <data name="AddData1" xml:space="preserve">
+    <value>داده اضافه 1</value>
+  </data>
+  <data name="AddData2" xml:space="preserve">
+    <value>داده اضافه 2</value>
+  </data>
+  <data name="AddData3" xml:space="preserve">
+    <value>داده اضافه 3</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>آدرس</value>
+  </data>
+  <data name="AffectiveAmount" xml:space="preserve">
+    <value>مبلغ تسویه</value>
+  </data>
+  <data name="AmountList" xml:space="preserve">
+    <value>لیست مبالغ</value>
+  </data>
+  <data name="ApiId" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Balance" xml:space="preserve">
+    <value>موجودی</value>
+  </data>
+  <data name="BalanceAmount" xml:space="preserve">
+    <value>مبلغ موجودی</value>
+  </data>
+  <data name="BankAccountNO" xml:space="preserve">
+    <value>شماره حساب</value>
+  </data>
+  <data name="BaseChannelId" xml:space="preserve">
+    <value>کانال اصلی</value>
+  </data>
+  <data name="BE_AccessList" xml:space="preserve">
+    <value>امنیت</value>
+  </data>
+  <data name="BE_BusinessEntity" xml:space="preserve">
+    <value>مشتری</value>
+  </data>
+  <data name="BE_Config" xml:space="preserve">
+    <value>پیکربندی</value>
+  </data>
+  <data name="BE_Profile" xml:space="preserve">
+    <value>اطلاعات تماس</value>
+  </data>
+  <data name="BE_Type" xml:space="preserve">
+    <value>نوع مشتری</value>
+  </data>
+  <data name="BId" xml:space="preserve">
+    <value>مشتری</value>
+  </data>
+  <data name="Bill" xml:space="preserve">
+    <value>قبض</value>
+  </data>
+  <data name="BillCount" xml:space="preserve">
+    <value>تعداد قبض</value>
+  </data>
+  <data name="BillSum" xml:space="preserve">
+    <value>جمع قبض</value>
+  </data>
+  <data name="Birthday" xml:space="preserve">
+    <value>تاریخ تولد</value>
+  </data>
+  <data name="BTypeId" xml:space="preserve">
+    <value>نوع مشتری</value>
+  </data>
+  <data name="BusinessDate" xml:space="preserve">
+    <value>تاریخ مالی</value>
+  </data>
+  <data name="CellNumber" xml:space="preserve">
+    <value>شماره موبایل</value>
+  </data>
+  <data name="CM_CellPrefix" xml:space="preserve">
+    <value>پیش شماره</value>
+  </data>
+  <data name="CM_Guild" xml:space="preserve">
+    <value>صنف</value>
+  </data>
+  <data name="CM_Operator" xml:space="preserve">
+    <value>اپراتور سیم کارت</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>نام شرکت</value>
+  </data>
+  <data name="Condition" xml:space="preserve">
+    <value>وضعیت</value>
+  </data>
+  <data name="CreatedOn" xml:space="preserve">
+    <value>تاریخ ایجاد</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>توضیحات</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>جزییات</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>ایمیل</value>
+  </data>
+  <data name="EnCompanyName" xml:space="preserve">
+    <value>نام لاتین شرکت</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>تاریخ پایان</value>
+  </data>
+  <data name="EnFName" xml:space="preserve">
+    <value>نام لاتین</value>
+  </data>
+  <data name="EnLName" xml:space="preserve">
+    <value>نام خانوادگی لاتین</value>
+  </data>
+  <data name="ErrorCode" xml:space="preserve">
+    <value>کد خطا</value>
+  </data>
+  <data name="ErrorType" xml:space="preserve">
+    <value>نوع خطا</value>
+  </data>
+  <data name="FailedCount" xml:space="preserve">
+    <value>تعداد ناموفق</value>
+  </data>
+  <data name="FName" xml:space="preserve">
+    <value>نام</value>
+  </data>
+  <data name="FwBId" xml:space="preserve">
+    <value>حساب مبدا</value>
+  </data>
+  <data name="FwPrCode" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FWRefNo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>جنسیت</value>
+  </data>
+  <data name="GuildId" xml:space="preserve">
+    <value>صنف</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>راهنما</value>
+  </data>
+  <data name="IBAN" xml:space="preserve">
+    <value>شماره شبا</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>شناسه</value>
+  </data>
+  <data name="Identifier" xml:space="preserve">
+    <value>شناسه</value>
+  </data>
+  <data name="IpAddress" xml:space="preserve">
+    <value>Ip</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>فعال</value>
+  </data>
+  <data name="IsAdmin" xml:space="preserve">
+    <value>ادمین</value>
+  </data>
+  <data name="IsPostPaid" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IsReserved" xml:space="preserve">
+    <value>رزرو شده</value>
+  </data>
+  <data name="Journal" xml:space="preserve">
+    <value>سند</value>
+  </data>
+  <data name="JournalDate" xml:space="preserve">
+    <value>تاریخ سند</value>
+  </data>
+  <data name="JournalId" xml:space="preserve">
+    <value>سند</value>
+  </data>
+  <data name="LastId" xml:space="preserve">
+    <value>آخرین شناسه</value>
+  </data>
+  <data name="LastResNum" xml:space="preserve">
+    <value>آخرین شناسه خرید</value>
+  </data>
+  <data name="LastTxnDate" xml:space="preserve">
+    <value>تاریخ آخرین تراکنش</value>
+  </data>
+  <data name="LName" xml:space="preserve">
+    <value>نام خانوادگی</value>
+  </data>
+  <data name="LocalDateTime" xml:space="preserve">
+    <value>تاریخ محلی</value>
+  </data>
+  <data name="LocalDate_Rx" xml:space="preserve">
+    <value>تاریخ دریافت</value>
+  </data>
+  <data name="LocalDate_TX" xml:space="preserve">
+    <value>تاریخ ارسال</value>
+  </data>
+  <data name="LocalId" xml:space="preserve">
+    <value>شناسه محلی</value>
+  </data>
+  <data name="LocalSerial" xml:space="preserve">
+    <value>سریال درخواست</value>
+  </data>
+  <data name="MaxAmount" xml:space="preserve">
+    <value>سقف مبلغ</value>
+  </data>
+  <data name="MCI" xml:space="preserve">
+    <value>همراه اول</value>
+  </data>
+  <data name="MCICount" xml:space="preserve">
+    <value>تعداد همراه اول</value>
+  </data>
+  <data name="MCISum" xml:space="preserve">
+    <value>جمع همراه اول</value>
+  </data>
+  <data name="MinAmount" xml:space="preserve">
+    <value>کف مبلغ</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>موبایل</value>
+  </data>
+  <data name="ModifiedOn" xml:space="preserve">
+    <value>تاریخ ویرایش</value>
+  </data>
+  <data name="MTI" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MTN" xml:space="preserve">
+    <value>ایرانسل</value>
+  </data>
+  <data name="MTNCount" xml:space="preserve">
+    <value>تعداد ایرانسل</value>
+  </data>
+  <data name="MTNSum" xml:space="preserve">
+    <value>جمع ایرانسل</value>
+  </data>
+  <data name="MultiChage" xml:space="preserve">
+    <value>شارژ گروهی</value>
+  </data>
+  <data name="NationalCode" xml:space="preserve">
+    <value>شماره ملی</value>
+  </data>
+  <data name="NumberList" xml:space="preserve">
+    <value>لیست شماره ها</value>
+  </data>
+  <data name="NumberListLen" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OperatorId" xml:space="preserve">
+    <value>اپراتور</value>
+  </data>
+  <data name="OriginalAmount" xml:space="preserve">
+    <value>مبلغ اصلی</value>
+  </data>
+  <data name="OtherAddress" xml:space="preserve">
+    <value>آدرس دیگر</value>
+  </data>
+  <data name="OtherEmail" xml:space="preserve">
+    <value>ایمیل دیگر</value>
+  </data>
+  <data name="OtherOperator" xml:space="preserve">
+    <value>اپراتورهای دیگر</value>
+  </data>
+  <data name="OtherTell" xml:space="preserve">
+    <value>تلفن دیگر</value>
+  </data>
+  <data name="ParentCM_Guild" xml:space="preserve">
+    <value>صنف سرشاخه</value>
+  </data>
+  <data name="ParentId" xml:space="preserve">
+    <value>سرشاخه</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>کلمه عبور</value>
+  </data>
+  <data name="PinCharge" xml:space="preserve">
+    <value>شارژ</value>
+  </data>
+  <data name="PinChargeCount" xml:space="preserve">
+    <value>تعداد شارژ پین</value>
+  </data>
+  <data name="PinChargeSum" xml:space="preserve">
+    <value>جمع شارژ پین</value>
+  </data>
+  <data name="PrCode" xml:space="preserve">
+    <value>کد محصول</value>
+  </data>
+  <data name="Prefix" xml:space="preserve">
+    <value>پیش شماره</value>
+  </data>
+  <data name="PublicId" xml:space="preserve">
+    <value>شناسه عمومی</value>
+  </data>
+  <data name="Purchase" xml:space="preserve">
+    <value>خرید</value>
+  </data>
+  <data name="QLen" xml:space="preserve">
+    <value>طول صف</value>
+  </data>
+  <data name="ReferenceId" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ReferenceNumber" xml:space="preserve">
+    <value>شماره مرجع</value>
+  </data>
+  <data name="RefNumId" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RefrenceNumber" xml:space="preserve">
+    <value>شماره مرجع</value>
+  </data>
+  <data name="RegCode" xml:space="preserve">
+    <value>کد ثبت</value>
+  </data>
+  <data name="RegDate" xml:space="preserve">
+    <value>تاریخ ثبت</value>
+  </data>
+  <data name="RequestDate" xml:space="preserve">
+    <value>تاریخ درخواست</value>
+  </data>
+  <data name="RequestSerial" xml:space="preserve">
+    <value>شماره سفارش</value>
+  </data>
+  <data name="Reserve2" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Reserve3" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Reserve4" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Reserve5" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ReserveNumber" xml:space="preserve">
+    <value>شماره رزرو</value>
+  </data>
+  <data name="Resevre1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ResponseCode" xml:space="preserve">
+    <value>کد پاسخ</value>
+  </data>
+  <data name="ResponseMsg" xml:space="preserve">
+    <value>پیام پاسخ</value>
+  </data>
+  <data name="ReverseTxn" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Rightel" xml:space="preserve">
+    <value>رایتل</value>
+  </data>
+  <data name="RightelCount" xml:space="preserve">
+    <value>تعداد رایتل</value>
+  </data>
+  <data name="RightelSum" xml:space="preserve">
+    <value>جمع رایتل</value>
+  </data>
+  <data name="ScheduleTime" xml:space="preserve">
+    <value>زمان مشخص شده</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>تاریخ شروع</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>وضعیت</value>
+  </data>
+  <data name="StatusCode" xml:space="preserve">
+    <value>کد وضعیت</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>عنوان</value>
+  </data>
+  <data name="TitleEn" xml:space="preserve">
+    <value>عنوان انگلیسی</value>
+  </data>
+  <data name="TitleFa" xml:space="preserve">
+    <value>عنوان</value>
+  </data>
+  <data name="TopUp" xml:space="preserve">
+    <value>شارژ مستقیم</value>
+  </data>
+  <data name="TopUpCount" xml:space="preserve">
+    <value>تعداد شارژ مستقیم</value>
+  </data>
+  <data name="TopUpSum" xml:space="preserve">
+    <value>جمع شارژ مستقیم</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>مبلغ کل</value>
+  </data>
+  <data name="TotalRequest" xml:space="preserve">
+    <value>تعداد کل درخواست</value>
+  </data>
+  <data name="TraceEntityId" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TryCount" xml:space="preserve">
+    <value>تعداد مجاز تلاش</value>
+  </data>
+  <data name="TxnAmount" xml:space="preserve">
+    <value>مبلغ تراکنش</value>
+  </data>
+  <data name="TxnDate" xml:space="preserve">
+    <value>روز تراکنش</value>
+  </data>
+  <data name="TxnMonth" xml:space="preserve">
+    <value>ماه تراکنش</value>
+  </data>
+  <data name="TxnType" xml:space="preserve">
+    <value>نوع تراکنش</value>
+  </data>
+  <data name="TxStatus" xml:space="preserve">
+    <value>وضعیت تراکنش</value>
+  </data>
+  <data name="TypeCode" xml:space="preserve">
+    <value>کد نوع</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>نام کاربری</value>
+  </data>
+  <data name="ErrorTypeText" xml:space="preserve">
+    <value>نوع خطا</value>
+  </data>
+</root>

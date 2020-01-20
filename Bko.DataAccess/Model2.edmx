@@ -1,0 +1,1068 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MSrvChargeWarehouseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChargeOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReferenceNumber" Type="bigint" Nullable="false" />
+          <Property Name="RequestSerial" Type="bigint" Nullable="false" />
+          <Property Name="ChargePoolId" Type="bigint" Nullable="false" />
+          <Property Name="BId" Type="bigint" Nullable="false" />
+          <Property Name="DeviceType" Type="tinyint" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="cpId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="ChargePool">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BId" Type="int" Nullable="false" />
+          <Property Name="pSeriral" Type="bigint" />
+          <Property Name="pPin" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FileId" Type="bigint" Nullable="false" />
+          <Property Name="OperatorId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ChargeType" Type="int" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="FwBId" Type="bigint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSrvChargeWarehouse.dbo.chargepool2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="chargepool2">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="BId" />
+            <PropertyRef Name="pPin" />
+            <PropertyRef Name="FileId" />
+            <PropertyRef Name="OperatorId" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="ChargeType" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="CreatedOn" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BId" Type="int" Nullable="false" />
+          <Property Name="pSeriral" Type="bigint" />
+          <Property Name="pPin" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FileId" Type="bigint" Nullable="false" />
+          <Property Name="OperatorId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ChargeType" Type="int" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="FwBId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="ChargeUploadFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PacketId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CardCount" Type="int" Nullable="false" />
+          <Property Name="OperatorId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="CardUploadedCount" Type="int" Nullable="false" />
+          <Property Name="Type" Type="tinyint" />
+          <Property Name="Province" Type="int" />
+        </EntityType>
+        <EntityType Name="PoolConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Bid" Type="bigint" Nullable="false" />
+          <Property Name="OperatorId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CardCount" Type="int" Nullable="false" />
+          <Property Name="MinBalance" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSrvChargeWarehouse.dbo.PoolFailed' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PoolFailed">
+          <Key>
+            <PropertyRef Name="RowId" />
+            <PropertyRef Name="NewFileId" />
+            <PropertyRef Name="CreatedOn" />
+          </Key>
+          <Property Name="RowId" Type="bigint" Nullable="false" />
+          <Property Name="NewFileId" Type="bigint" Nullable="false" />
+          <Property Name="Type" Type="tinyint" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PoolHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Bid" Type="bigint" Nullable="false" />
+          <Property Name="OperatorId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CardCount" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSrvChargeWarehouse.dbo.PoolTempTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PoolTempTable">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="BId" />
+            <PropertyRef Name="pSeriral" />
+            <PropertyRef Name="pPin" />
+            <PropertyRef Name="FileId" />
+            <PropertyRef Name="OperatorId" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="ChargeType" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="CreatedOn" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BId" Type="int" Nullable="false" />
+          <Property Name="pSeriral" Type="bigint" Nullable="false" />
+          <Property Name="pPin" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FileId" Type="bigint" Nullable="false" />
+          <Property Name="OperatorId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ChargeType" Type="int" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="FwBid" Type="bigint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSrvChargeWarehouse.dbo.Province' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Province_Code" />
+            <PropertyRef Name="Province_Title" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Province_Code" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Province_Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="En_Title" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SimPool">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="CellNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PreCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Prefix" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Postfix" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="pPin" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CellType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CellGrade" Type="tinyint" Nullable="false" />
+          <Property Name="BillId" Type="nvarchar" MaxLength="18" />
+          <Property Name="PayId" Type="nvarchar" MaxLength="18" />
+          <Property Name="ExpDate" Type="datetime" />
+          <Property Name="ProductDate" Type="datetime" />
+          <Property Name="DocCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Province" Type="int" />
+          <Property Name="FileId" Type="bigint" Nullable="false" />
+          <Property Name="OperatorId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SimType" Type="int" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SimPoolTempTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="CellNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PreCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Prefix" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Postfix" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="pPin" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CellType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CellGrade" Type="tinyint" Nullable="false" />
+          <Property Name="BillId" Type="nvarchar" MaxLength="18" />
+          <Property Name="PayId" Type="nvarchar" MaxLength="18" />
+          <Property Name="ExpDate" Type="datetime" />
+          <Property Name="ProductDate" Type="datetime" />
+          <Property Name="DocCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Province" Type="int" />
+          <Property Name="FileId" Type="bigint" Nullable="false" />
+          <Property Name="OperatorId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SimType" Type="int" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSrvChargeWarehouse.dbo.Vw_SaleOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Vw_SaleOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ReferenceNumber" />
+            <PropertyRef Name="RequestSerial" />
+            <PropertyRef Name="ChargePoolId" />
+            <PropertyRef Name="pPin" />
+            <PropertyRef Name="OperatorId" />
+            <PropertyRef Name="CardPrice" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="PcId" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="PcPrice" />
+            <PropertyRef Name="CardCount" />
+            <PropertyRef Name="cId" />
+            <PropertyRef Name="Bid" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="ReferenceNumber" Type="bigint" Nullable="false" />
+          <Property Name="RequestSerial" Type="bigint" Nullable="false" />
+          <Property Name="ChargePoolId" Type="bigint" Nullable="false" />
+          <Property Name="DeviceType" Type="tinyint" />
+          <Property Name="pSeriral" Type="bigint" />
+          <Property Name="pPin" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="OperatorId" Type="int" Nullable="false" />
+          <Property Name="CardPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="PcId" Type="bigint" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PcPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CardCount" Type="int" Nullable="false" />
+          <Property Name="cId" Type="bigint" Nullable="false" />
+          <Property Name="Bid" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="fn_ReturnNumberOfRows" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="FileId" Type="bigint" Mode="In" />
+          <Parameter Name="Type" Type="bit" Mode="In" />
+          <Parameter Name="Start" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="GetPersianDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="InputDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="GetPersianDateTime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="InputDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="PinBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="SimBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="SimSale" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Date" Type="date" Mode="In" />
+          <Parameter Name="SimType" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_Clear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertFailedRowIntoTemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FileId" Type="bigint" Mode="In" />
+          <Parameter Name="Type" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertToChargePool" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FileID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertToSimPool" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FileID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_UploadResult" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpBatchReserveCharge" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Price" Type="int" Mode="In" />
+          <Parameter Name="OpId" Type="int" Mode="In" />
+          <Parameter Name="Count" Type="int" Mode="In" />
+          <Parameter Name="BId" Type="bigint" Mode="In" />
+        </Function>
+        <EntityContainer Name="MSrvChargeWarehouseModelStoreContainer">
+          <EntitySet Name="ChargeOrder" EntityType="Self.ChargeOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChargePool" EntityType="Self.ChargePool" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChargeUploadFile" EntityType="Self.ChargeUploadFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PoolConfig" EntityType="Self.PoolConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PoolHistory" EntityType="Self.PoolHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SimPool" EntityType="Self.SimPool" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SimPoolTempTable" EntityType="Self.SimPoolTempTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chargepool2" EntityType="Self.chargepool2" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [chargepool2].[Id] AS [Id], 
+    [chargepool2].[BId] AS [BId], 
+    [chargepool2].[pSeriral] AS [pSeriral], 
+    [chargepool2].[pPin] AS [pPin], 
+    [chargepool2].[FileId] AS [FileId], 
+    [chargepool2].[OperatorId] AS [OperatorId], 
+    [chargepool2].[Price] AS [Price], 
+    [chargepool2].[ChargeType] AS [ChargeType], 
+    [chargepool2].[Status] AS [Status], 
+    [chargepool2].[CreatedOn] AS [CreatedOn], 
+    [chargepool2].[ModifiedOn] AS [ModifiedOn], 
+    [chargepool2].[FwBId] AS [FwBId]
+    FROM [dbo].[chargepool2] AS [chargepool2]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PoolFailed" EntityType="Self.PoolFailed" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PoolFailed].[RowId] AS [RowId], 
+    [PoolFailed].[NewFileId] AS [NewFileId], 
+    [PoolFailed].[Type] AS [Type], 
+    [PoolFailed].[CreatedOn] AS [CreatedOn]
+    FROM [dbo].[PoolFailed] AS [PoolFailed]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PoolTempTable" EntityType="Self.PoolTempTable" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PoolTempTable].[Id] AS [Id], 
+    [PoolTempTable].[BId] AS [BId], 
+    [PoolTempTable].[pSeriral] AS [pSeriral], 
+    [PoolTempTable].[pPin] AS [pPin], 
+    [PoolTempTable].[FileId] AS [FileId], 
+    [PoolTempTable].[OperatorId] AS [OperatorId], 
+    [PoolTempTable].[Price] AS [Price], 
+    [PoolTempTable].[ChargeType] AS [ChargeType], 
+    [PoolTempTable].[Status] AS [Status], 
+    [PoolTempTable].[CreatedOn] AS [CreatedOn], 
+    [PoolTempTable].[ModifiedOn] AS [ModifiedOn], 
+    [PoolTempTable].[FwBid] AS [FwBid]
+    FROM [dbo].[PoolTempTable] AS [PoolTempTable]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Province" EntityType="Self.Province" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Province].[Id] AS [Id], 
+    [Province].[Province_Code] AS [Province_Code], 
+    [Province].[Province_Title] AS [Province_Title], 
+    [Province].[En_Title] AS [En_Title]
+    FROM [dbo].[Province] AS [Province]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Vw_SaleOrder" EntityType="Self.Vw_SaleOrder" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vw_SaleOrder].[Id] AS [Id], 
+    [Vw_SaleOrder].[ReferenceNumber] AS [ReferenceNumber], 
+    [Vw_SaleOrder].[RequestSerial] AS [RequestSerial], 
+    [Vw_SaleOrder].[ChargePoolId] AS [ChargePoolId], 
+    [Vw_SaleOrder].[DeviceType] AS [DeviceType], 
+    [Vw_SaleOrder].[pSeriral] AS [pSeriral], 
+    [Vw_SaleOrder].[pPin] AS [pPin], 
+    [Vw_SaleOrder].[OperatorId] AS [OperatorId], 
+    [Vw_SaleOrder].[CardPrice] AS [CardPrice], 
+    [Vw_SaleOrder].[Status] AS [Status], 
+    [Vw_SaleOrder].[PcId] AS [PcId], 
+    [Vw_SaleOrder].[Title] AS [Title], 
+    [Vw_SaleOrder].[PcPrice] AS [PcPrice], 
+    [Vw_SaleOrder].[CardCount] AS [CardCount], 
+    [Vw_SaleOrder].[cId] AS [cId], 
+    [Vw_SaleOrder].[Bid] AS [Bid]
+    FROM [dbo].[Vw_SaleOrder] AS [Vw_SaleOrder]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MSrvChargeWarehouseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ChargeOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReferenceNumber" Type="Int64" Nullable="false" />
+          <Property Name="RequestSerial" Type="Int64" Nullable="false" />
+          <Property Name="ChargePoolId" Type="Int64" Nullable="false" />
+          <Property Name="BId" Type="Int64" Nullable="false" />
+          <Property Name="DeviceType" Type="Byte" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cpId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="ChargePool">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BId" Type="Int32" Nullable="false" />
+          <Property Name="pSeriral" Type="Int64" />
+          <Property Name="pPin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileId" Type="Int64" Nullable="false" />
+          <Property Name="OperatorId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ChargeType" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="FwBId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="ChargeUploadFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PacketId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CardCount" Type="Int32" Nullable="false" />
+          <Property Name="OperatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CardUploadedCount" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Byte" />
+          <Property Name="Province" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PoolConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Bid" Type="Int64" Nullable="false" />
+          <Property Name="OperatorId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CardCount" Type="Int32" Nullable="false" />
+          <Property Name="MinBalance" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="PoolHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bid" Type="Int64" Nullable="false" />
+          <Property Name="OperatorId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CardCount" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="SimPool">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CellNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PreCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prefix" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Postfix" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pPin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CellType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CellGrade" Type="Byte" Nullable="false" />
+          <Property Name="BillId" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="PayId" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="ExpDate" Type="DateTime" Precision="3" />
+          <Property Name="ProductDate" Type="DateTime" Precision="3" />
+          <Property Name="DocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="Int32" />
+          <Property Name="FileId" Type="Int64" Nullable="false" />
+          <Property Name="OperatorId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SimType" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SimPoolTempTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CellNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PreCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prefix" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Postfix" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pPin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CellType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CellGrade" Type="Byte" Nullable="false" />
+          <Property Name="BillId" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="PayId" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="ExpDate" Type="DateTime" Precision="3" />
+          <Property Name="ProductDate" Type="DateTime" Precision="3" />
+          <Property Name="DocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="Int32" />
+          <Property Name="FileId" Type="Int64" Nullable="false" />
+          <Property Name="OperatorId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SimType" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="chargepool2">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="BId" />
+            <PropertyRef Name="pPin" />
+            <PropertyRef Name="FileId" />
+            <PropertyRef Name="OperatorId" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="ChargeType" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="CreatedOn" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BId" Type="Int32" Nullable="false" />
+          <Property Name="pSeriral" Type="Int64" />
+          <Property Name="pPin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileId" Type="Int64" Nullable="false" />
+          <Property Name="OperatorId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ChargeType" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="FwBId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="PoolFailed">
+          <Key>
+            <PropertyRef Name="RowId" />
+            <PropertyRef Name="NewFileId" />
+            <PropertyRef Name="CreatedOn" />
+          </Key>
+          <Property Name="RowId" Type="Int64" Nullable="false" />
+          <Property Name="NewFileId" Type="Int64" Nullable="false" />
+          <Property Name="Type" Type="Byte" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="PoolTempTable">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="BId" />
+            <PropertyRef Name="pSeriral" />
+            <PropertyRef Name="pPin" />
+            <PropertyRef Name="FileId" />
+            <PropertyRef Name="OperatorId" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="ChargeType" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="CreatedOn" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BId" Type="Int32" Nullable="false" />
+          <Property Name="pSeriral" Type="Int64" Nullable="false" />
+          <Property Name="pPin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileId" Type="Int64" Nullable="false" />
+          <Property Name="OperatorId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ChargeType" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="FwBid" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Province_Code" />
+            <PropertyRef Name="Province_Title" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Province_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Province_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="En_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Vw_SaleOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ReferenceNumber" />
+            <PropertyRef Name="RequestSerial" />
+            <PropertyRef Name="ChargePoolId" />
+            <PropertyRef Name="pPin" />
+            <PropertyRef Name="OperatorId" />
+            <PropertyRef Name="CardPrice" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="PcId" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="PcPrice" />
+            <PropertyRef Name="CardCount" />
+            <PropertyRef Name="cId" />
+            <PropertyRef Name="Bid" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="ReferenceNumber" Type="Int64" Nullable="false" />
+          <Property Name="RequestSerial" Type="Int64" Nullable="false" />
+          <Property Name="ChargePoolId" Type="Int64" Nullable="false" />
+          <Property Name="DeviceType" Type="Byte" />
+          <Property Name="pSeriral" Type="Int64" />
+          <Property Name="pPin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OperatorId" Type="Int32" Nullable="false" />
+          <Property Name="CardPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="PcId" Type="Int64" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PcPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CardCount" Type="Int32" Nullable="false" />
+          <Property Name="cId" Type="Int64" Nullable="false" />
+          <Property Name="Bid" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MSrvChargeWarehouseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ChargeOrders" EntityType="Self.ChargeOrder" />
+          <EntitySet Name="ChargePools" EntityType="Self.ChargePool" />
+          <EntitySet Name="ChargeUploadFiles" EntityType="Self.ChargeUploadFile" />
+          <EntitySet Name="PoolConfigs" EntityType="Self.PoolConfig" />
+          <EntitySet Name="PoolHistories" EntityType="Self.PoolHistory" />
+          <EntitySet Name="SimPools" EntityType="Self.SimPool" />
+          <EntitySet Name="SimPoolTempTables" EntityType="Self.SimPoolTempTable" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="chargepool2" EntityType="Self.chargepool2" />
+          <EntitySet Name="PoolFaileds" EntityType="Self.PoolFailed" />
+          <EntitySet Name="PoolTempTables" EntityType="Self.PoolTempTable" />
+          <EntitySet Name="Provinces" EntityType="Self.Province" />
+          <EntitySet Name="Vw_SaleOrder" EntityType="Self.Vw_SaleOrder" />
+          <FunctionImport Name="PinBalance" ReturnType="Collection(MSrvChargeWarehouseModel.PinBalance_Result)">
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SimBalance" ReturnType="Collection(MSrvChargeWarehouseModel.SimBalance_Result)">
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SimSale" ReturnType="Collection(MSrvChargeWarehouseModel.SimSale_Result)">
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="SimType" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Clear" />
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MSrvChargeWarehouseModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MSrvChargeWarehouseModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertFailedRowIntoTemp">
+            <Parameter Name="FileId" Mode="In" Type="Int64" />
+            <Parameter Name="Type" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertToChargePool">
+            <Parameter Name="FileID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertToSimPool">
+            <Parameter Name="FileID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="SP_UploadResult" />
+          <FunctionImport Name="SpBatchReserveCharge">
+            <Parameter Name="Price" Mode="In" Type="Int32" />
+            <Parameter Name="OpId" Mode="In" Type="Int32" />
+            <Parameter Name="Count" Mode="In" Type="Int32" />
+            <Parameter Name="BId" Mode="In" Type="Int64" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="PinBalance_Result">
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="14" />
+          <Property Type="Int32" Name="chargepoolCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SimBalance_Result">
+          <Property Type="String" Name="Province_Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SimType" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="count" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SimSale_Result">
+          <Property Type="String" Name="Province_Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SimType" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="count" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MSrvChargeWarehouseModelStoreContainer" CdmEntityContainer="MSrvChargeWarehouseEntities">
+          <EntitySetMapping Name="ChargeOrders">
+            <EntityTypeMapping TypeName="MSrvChargeWarehouseModel.ChargeOrder">
+              <MappingFragment StoreEntitySet="ChargeOrder">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+                <ScalarProperty Name="RequestSerial" ColumnName="RequestSerial" />
+                <ScalarProperty Name="ChargePoolId" ColumnName="ChargePoolId" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="cpId" ColumnName="cpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChargePools">
+            <EntityTypeMapping TypeName="MSrvChargeWarehouseModel.ChargePool">
+              <MappingFragment StoreEntitySet="ChargePool">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="pSeriral" ColumnName="pSeriral" />
+                <ScalarProperty Name="pPin" ColumnName="pPin" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ChargeType" ColumnName="ChargeType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="FwBId" ColumnName="FwBId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChargeUploadFiles">
+            <EntityTypeMapping TypeName="MSrvChargeWarehouseModel.ChargeUploadFile">
+              <MappingFragment StoreEntitySet="ChargeUploadFile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PacketId" ColumnName="PacketId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CardCount" ColumnName="CardCount" />
+                <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CardUploadedCount" ColumnName="CardUploadedCount" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PoolConfigs">
+            <EntityTypeMapping TypeName="MSrvChargeWarehouseModel.PoolConfig">
+              <MappingFragment StoreEntitySet="PoolConfig">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Bid" ColumnName="Bid" />
+                <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CardCount" ColumnName="CardCount" />
+                <ScalarProperty Name="MinBalance" ColumnName="MinBalance" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PoolHistories">
+            <EntityTypeMapping TypeName="MSrvChargeWarehouseModel.PoolHistory">
+              <MappingFragment StoreEntitySet="PoolHistory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Bid" ColumnName="Bid" />
+                <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CardCount" ColumnName="CardCount" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SimPools">
+            <EntityTypeMapping TypeName="MSrvChargeWarehouseModel.SimPool">
+              <MappingFragment StoreEntitySet="SimPool">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CellNumber" ColumnName="CellNumber" />
+                <ScalarProperty Name="PreCode" ColumnName="PreCode" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="Postfix" ColumnName="Postfix" />
+                <ScalarProperty Name="pPin" ColumnName="pPin" />
+                <ScalarProperty Name="CellType" ColumnName="CellType" />
+                <ScalarProperty Name="CellGrade" ColumnName="CellGrade" />
+                <ScalarProperty Name="BillId" ColumnName="BillId" />
+                <ScalarProperty Name="PayId" ColumnName="PayId" />
+                <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+                <ScalarProperty Name="ProductDate" ColumnName="ProductDate" />
+                <ScalarProperty Name="DocCode" ColumnName="DocCode" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SimType" ColumnName="SimType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SimPoolTempTables">
+            <EntityTypeMapping TypeName="MSrvChargeWarehouseModel.SimPoolTempTable">
+              <MappingFragment StoreEntitySet="SimPoolTempTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CellNumber" ColumnName="CellNumber" />
+                <ScalarProperty Name="PreCode" ColumnName="PreCode" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="Postfix" ColumnName="Postfix" />
+                <ScalarProperty Name="pPin" ColumnName="pPin" />
+                <ScalarProperty Name="CellType" ColumnName="CellType" />
+                <ScalarProperty Name="CellGrade" ColumnName="CellGrade" />
+                <ScalarProperty Name="BillId" ColumnName="BillId" />
+                <ScalarProperty Name="PayId" ColumnName="PayId" />
+                <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+                <ScalarProperty Name="ProductDate" ColumnName="ProductDate" />
+                <ScalarProperty Name="DocCode" ColumnName="DocCode" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SimType" ColumnName="SimType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MSrvChargeWarehouseModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chargepool2">
+            <EntityTypeMapping TypeName="MSrvChargeWarehouseModel.chargepool2">
+              <MappingFragment StoreEntitySet="chargepool2">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="pSeriral" ColumnName="pSeriral" />
+                <ScalarProperty Name="pPin" ColumnName="pPin" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ChargeType" ColumnName="ChargeType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="FwBId" ColumnName="FwBId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PoolFaileds">
+            <EntityTypeMapping TypeName="MSrvChargeWarehouseModel.PoolFailed">
+              <MappingFragment StoreEntitySet="PoolFailed">
+                <ScalarProperty Name="RowId" ColumnName="RowId" />
+                <ScalarProperty Name="NewFileId" ColumnName="NewFileId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PoolTempTables">
+            <EntityTypeMapping TypeName="MSrvChargeWarehouseModel.PoolTempTable">
+              <MappingFragment StoreEntitySet="PoolTempTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="pSeriral" ColumnName="pSeriral" />
+                <ScalarProperty Name="pPin" ColumnName="pPin" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ChargeType" ColumnName="ChargeType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="FwBid" ColumnName="FwBid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="MSrvChargeWarehouseModel.Province">
+              <MappingFragment StoreEntitySet="Province">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Province_Code" ColumnName="Province_Code" />
+                <ScalarProperty Name="Province_Title" ColumnName="Province_Title" />
+                <ScalarProperty Name="En_Title" ColumnName="En_Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vw_SaleOrder">
+            <EntityTypeMapping TypeName="MSrvChargeWarehouseModel.Vw_SaleOrder">
+              <MappingFragment StoreEntitySet="Vw_SaleOrder">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+                <ScalarProperty Name="RequestSerial" ColumnName="RequestSerial" />
+                <ScalarProperty Name="ChargePoolId" ColumnName="ChargePoolId" />
+                <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+                <ScalarProperty Name="pSeriral" ColumnName="pSeriral" />
+                <ScalarProperty Name="pPin" ColumnName="pPin" />
+                <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+                <ScalarProperty Name="CardPrice" ColumnName="CardPrice" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PcId" ColumnName="PcId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="PcPrice" ColumnName="PcPrice" />
+                <ScalarProperty Name="CardCount" ColumnName="CardCount" />
+                <ScalarProperty Name="cId" ColumnName="cId" />
+                <ScalarProperty Name="Bid" ColumnName="Bid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PinBalance" FunctionName="MSrvChargeWarehouseModel.Store.PinBalance">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MSrvChargeWarehouseModel.PinBalance_Result">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="chargepoolCount" ColumnName="chargepoolCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SimBalance" FunctionName="MSrvChargeWarehouseModel.Store.SimBalance">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MSrvChargeWarehouseModel.SimBalance_Result">
+                <ScalarProperty Name="Province_Title" ColumnName="Province_Title" />
+                <ScalarProperty Name="SimType" ColumnName="SimType" />
+                <ScalarProperty Name="count" ColumnName="count" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SimSale" FunctionName="MSrvChargeWarehouseModel.Store.SimSale">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MSrvChargeWarehouseModel.SimSale_Result">
+                <ScalarProperty Name="Province_Title" ColumnName="Province_Title" />
+                <ScalarProperty Name="SimType" ColumnName="SimType" />
+                <ScalarProperty Name="count" ColumnName="count" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="MSrvChargeWarehouseModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="SP_Clear" FunctionName="MSrvChargeWarehouseModel.Store.SP_Clear" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="MSrvChargeWarehouseModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="MSrvChargeWarehouseModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="MSrvChargeWarehouseModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MSrvChargeWarehouseModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="MSrvChargeWarehouseModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MSrvChargeWarehouseModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_InsertFailedRowIntoTemp" FunctionName="MSrvChargeWarehouseModel.Store.sp_InsertFailedRowIntoTemp" />
+          <FunctionImportMapping FunctionImportName="SP_InsertToChargePool" FunctionName="MSrvChargeWarehouseModel.Store.SP_InsertToChargePool" />
+          <FunctionImportMapping FunctionImportName="SP_InsertToSimPool" FunctionName="MSrvChargeWarehouseModel.Store.SP_InsertToSimPool" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MSrvChargeWarehouseModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MSrvChargeWarehouseModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="SP_UploadResult" FunctionName="MSrvChargeWarehouseModel.Store.SP_UploadResult" />
+          <FunctionImportMapping FunctionImportName="SpBatchReserveCharge" FunctionName="MSrvChargeWarehouseModel.Store.SpBatchReserveCharge" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bko.Service", "Bko.Service\Bko.Service.csproj", "{6493B488-DD3F-4D86-B692-D0D96DA909FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bko.Service.Tests", "Bko.Service.Tests\Bko.Service.Tests.csproj", "{06F5B6D2-4163-4744-A1D8-183F91170BFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bko.Business", "Bko.Business\Bko.Business.csproj", "{9339129F-8A93-4315-9E16-FD5715C45664}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bko.DataAccess", "Bko.DataAccess\Bko.DataAccess.csproj", "{AD439345-5A23-48EC-8EE4-501621391722}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bko.Enum", "Bko.Enum\Bko.Enum.csproj", "{ABBBC499-C84E-4488-9BF5-BDCD870ED6D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bko.Framework", "Bko.Framework\Bko.Framework.csproj", "{157550F9-408F-4568-A97E-E1BACC5B813A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bko.Payment.Domain", "Bko.Payment.Domain\Bko.Payment.Domain.csproj", "{7247C899-7CD7-4086-A24D-4ACAF30C63CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6493B488-DD3F-4D86-B692-D0D96DA909FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6493B488-DD3F-4D86-B692-D0D96DA909FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6493B488-DD3F-4D86-B692-D0D96DA909FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6493B488-DD3F-4D86-B692-D0D96DA909FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06F5B6D2-4163-4744-A1D8-183F91170BFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06F5B6D2-4163-4744-A1D8-183F91170BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06F5B6D2-4163-4744-A1D8-183F91170BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06F5B6D2-4163-4744-A1D8-183F91170BFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9339129F-8A93-4315-9E16-FD5715C45664}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9339129F-8A93-4315-9E16-FD5715C45664}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9339129F-8A93-4315-9E16-FD5715C45664}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9339129F-8A93-4315-9E16-FD5715C45664}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD439345-5A23-48EC-8EE4-501621391722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD439345-5A23-48EC-8EE4-501621391722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD439345-5A23-48EC-8EE4-501621391722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD439345-5A23-48EC-8EE4-501621391722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABBBC499-C84E-4488-9BF5-BDCD870ED6D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABBBC499-C84E-4488-9BF5-BDCD870ED6D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABBBC499-C84E-4488-9BF5-BDCD870ED6D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABBBC499-C84E-4488-9BF5-BDCD870ED6D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{157550F9-408F-4568-A97E-E1BACC5B813A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{157550F9-408F-4568-A97E-E1BACC5B813A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{157550F9-408F-4568-A97E-E1BACC5B813A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{157550F9-408F-4568-A97E-E1BACC5B813A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7247C899-7CD7-4086-A24D-4ACAF30C63CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7247C899-7CD7-4086-A24D-4ACAF30C63CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7247C899-7CD7-4086-A24D-4ACAF30C63CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7247C899-7CD7-4086-A24D-4ACAF30C63CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://192.168.5.2:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Bko.Service.Tests\\Bko.Service.Tests.csproj
+		SccProjectName1 = Bko.Service.Tests
+		SccLocalPath1 = Bko.Service.Tests
+		SccProjectUniqueName2 = Bko.Service\\Bko.Service.csproj
+		SccProjectName2 = Bko.Service
+		SccLocalPath2 = Bko.Service
+		SccProjectUniqueName3 = Bko.Business\\Bko.Business.csproj
+		SccProjectName3 = Bko.Business
+		SccLocalPath3 = Bko.Business
+		SccProjectUniqueName4 = Bko.DataAccess\\Bko.DataAccess.csproj
+		SccProjectName4 = Bko.DataAccess
+		SccLocalPath4 = Bko.DataAccess
+		SccProjectUniqueName5 = Bko.Enum\\Bko.Enum.csproj
+		SccProjectName5 = Bko.Enum
+		SccLocalPath5 = Bko.Enum
+		SccProjectUniqueName6 = Bko.Framework\\Bko.Framework.csproj
+		SccProjectName6 = Bko.Framework
+		SccLocalPath6 = Bko.Framework
+		SccProjectUniqueName7 = Bko.Payment.Domain\\Bko.Payment.Domain.csproj
+		SccProjectName7 = Bko.Payment.Domain
+		SccLocalPath7 = Bko.Payment.Domain
+	EndGlobalSection
+EndGlobal

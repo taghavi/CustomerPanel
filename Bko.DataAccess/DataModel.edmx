@@ -1,0 +1,1635 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MsrvMainModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AC_Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="TitleFa" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="TitleEn" Type="nvarchar" MaxLength="150" />
+          <Property Name="BankAccountNO" Type="nvarchar" MaxLength="50" />
+          <Property Name="IBAN" Type="nvarchar" MaxLength="150" />
+          <Property Name="BalanceAmount" Type="decimal" Precision="21" Scale="0" Nullable="false" />
+          <Property Name="IsPostPaid" Type="bit" Nullable="false" />
+          <Property Name="MinAmount" Type="decimal" Precision="21" Scale="0" />
+          <Property Name="MaxAmount" Type="decimal" Precision="21" Scale="0" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AutoRecharge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BId" Type="bigint" Nullable="false" />
+          <Property Name="CellNumber" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="SimType" Type="tinyint" Nullable="false" />
+          <Property Name="ChargeType" Type="tinyint" Nullable="false" />
+          <Property Name="Service_Id" Type="tinyint" />
+          <Property Name="Threshold_Id" Type="tinyint" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="RechargeAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BE_AccessList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BId" Type="bigint" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BE_BusinessEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="TitleFa" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="TitleEn" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="GuildId" Type="int" Nullable="false" />
+          <Property Name="BTypeId" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TryCount" Type="tinyint" />
+          <Property Name="LastResNum" Type="bigint" />
+          <Property Name="TraceEntityId" Type="int" />
+          <Property Name="RefNumId" Type="int" />
+          <Property Name="IsReserved" Type="bit" />
+        </EntityType>
+        <EntityType Name="BE_Config">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="QLen" Type="int" Nullable="false" />
+          <Property Name="NumberListLen" Type="tinyint" Nullable="false" />
+          <Property Name="Bill" Type="bit" Nullable="false" />
+          <Property Name="Purchase" Type="bit" Nullable="false" />
+          <Property Name="PinCharge" Type="bit" Nullable="false" />
+          <Property Name="TopUp" Type="bit" Nullable="false" />
+          <Property Name="MTN" Type="bit" Nullable="false" />
+          <Property Name="MCI" Type="bit" Nullable="false" />
+          <Property Name="Rightel" Type="bit" Nullable="false" />
+          <Property Name="OtherOperator" Type="bit" Nullable="false" />
+          <Property Name="Balance" Type="bit" Nullable="false" />
+          <Property Name="MultiChage" Type="bit" Nullable="false" />
+          <Property Name="ReverseTxn" Type="bit" Nullable="false" />
+          <Property Name="Firewall" Type="bit" />
+          <Property Name="Resevre1" Type="bit" />
+          <Property Name="Reserve2" Type="bit" />
+          <Property Name="Reserve3" Type="bit" />
+          <Property Name="Reserve4" Type="bit" />
+          <Property Name="Reserve5" Type="bit" />
+          <Property Name="UniqueRequest" Type="bit" />
+        </EntityType>
+        <EntityType Name="BE_Counter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastId" Type="bigint" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BE_Profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="200" />
+          <Property Name="EnCompanyName" Type="nvarchar" MaxLength="200" />
+          <Property Name="FName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EnFName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EnLName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="NationalCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="15" />
+          <Property Name="Gender" Type="tinyint" />
+          <Property Name="RegDate" Type="datetime" />
+          <Property Name="RegCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="OtherTell" Type="nvarchar" MaxLength="220" />
+          <Property Name="OtherEmail" Type="nvarchar" MaxLength="1000" />
+          <Property Name="OtherAddress" Type="nvarchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BE_Provider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BId" Type="bigint" Nullable="false" />
+          <Property Name="OpeatorId" Type="tinyint" Nullable="false" />
+          <Property Name="Provider" Type="tinyint" Nullable="false" />
+          <Property Name="Priority" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BE_Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TitleFa" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="TitleEn" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="CM_CellPrefix">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prefix" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="OperatorId" Type="tinyint" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CM_Contacts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CellNumber" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CM_Guild">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="TitleFa" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TitleEn" Type="nvarchar" MaxLength="50" />
+          <Property Name="LocalId" Type="nvarchar" MaxLength="20" />
+          <Property Name="PublicId" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CM_Messages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TitleEn" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="TitleFa" Type="nvarchar" MaxLength="150" />
+          <Property Name="Detail" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Help" Type="nvarchar" MaxLength="500" />
+          <Property Name="ErrorType" Type="tinyint" Nullable="false" />
+          <Property Name="Condition" Type="tinyint" />
+          <Property Name="IsAcitve" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSrvMain.dbo.CM_Messages_Operator' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CM_Messages_Operator">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OperatorID" />
+            <PropertyRef Name="ResponseCode" />
+            <PropertyRef Name="HasRetryChance" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MessageID" Type="int" />
+          <Property Name="OperatorID" Type="tinyint" Nullable="false" />
+          <Property Name="ResponseCode" Type="int" Nullable="false" />
+          <Property Name="ResponseMessage" Type="nvarchar" MaxLength="150" />
+          <Property Name="HasRetryChance" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSrvMain.dbo.CM_OpBolton' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CM_OpBolton">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OpId" />
+            <PropertyRef Name="SimType" />
+            <PropertyRef Name="eRfillId" />
+            <PropertyRef Name="MsrId" />
+            <PropertyRef Name="Expiry" />
+            <PropertyRef Name="OriginalAmount" />
+            <PropertyRef Name="AffectiveAmount" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="VolumeGB" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="CreatedOn" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" />
+          <Property Name="OpId" Type="int" Nullable="false" />
+          <Property Name="SimType" Type="tinyint" Nullable="false" />
+          <Property Name="eRfillId" Type="int" Nullable="false" />
+          <Property Name="MsrId" Type="int" Nullable="false" />
+          <Property Name="Expiry" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="OriginalAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AffectiveAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="VolumeGB" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="pType" Type="nvarchar" MaxLength="20" />
+          <Property Name="OffCode" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="CM_Operator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Identifier" Type="tinyint" Nullable="false" />
+          <Property Name="BId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSrvMain.dbo.CM_Order' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CM_Order">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Infra_Config">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="BaseChannelId" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSrvMain.dbo.Vw_AccessList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Vw_AccessList">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="BId" />
+            <PropertyRef Name="IpAddress" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="CreatedOn" />
+            <PropertyRef Name="TitleFa" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="BId" Type="bigint" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="TitleFa" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSrvMain.dbo.Vw_BusinessEntity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Vw_BusinessEntity">
+          <Key>
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="GuildId" />
+            <PropertyRef Name="BTypeId" />
+            <PropertyRef Name="FName" />
+            <PropertyRef Name="LName" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="BalanceAmount" />
+            <PropertyRef Name="IsPostPaid" />
+            <PropertyRef Name="TitleFa" />
+            <PropertyRef Name="Title_Typ" />
+            <PropertyRef Name="Title_G" />
+          </Key>
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="GuildId" Type="int" Nullable="false" />
+          <Property Name="BTypeId" Type="int" Nullable="false" />
+          <Property Name="FName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="200" />
+          <Property Name="LName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="15" />
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="TryCount" Type="tinyint" />
+          <Property Name="BalanceAmount" Type="decimal" Precision="21" Scale="0" Nullable="false" />
+          <Property Name="IsPostPaid" Type="bit" Nullable="false" />
+          <Property Name="MinAmount" Type="decimal" Precision="21" Scale="0" />
+          <Property Name="MaxAmount" Type="decimal" Precision="21" Scale="0" />
+          <Property Name="TraceEntityId" Type="int" />
+          <Property Name="RefNumId" Type="int" />
+          <Property Name="LastResNum" Type="bigint" />
+          <Property Name="TitleFa" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Title_Typ" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Title_G" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSrvMain.dbo.Vw_OpBolton' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Vw_OpBolton">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OpId" />
+            <PropertyRef Name="SimType" />
+            <PropertyRef Name="eRfillId" />
+            <PropertyRef Name="MsrId" />
+            <PropertyRef Name="Expiry" />
+            <PropertyRef Name="OriginalAmount" />
+            <PropertyRef Name="AffectiveAmount" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="VolumeGB" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="CreatedOn" />
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" />
+          <Property Name="OpId" Type="int" Nullable="false" />
+          <Property Name="SimType" Type="tinyint" Nullable="false" />
+          <Property Name="eRfillId" Type="int" Nullable="false" />
+          <Property Name="MsrId" Type="int" Nullable="false" />
+          <Property Name="Expiry" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="OriginalAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AffectiveAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="VolumeGB" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="pType" Type="nvarchar" MaxLength="20" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AC_Account_BE_BusinessEntity1">
+          <End Role="BE_BusinessEntity" Type="Self.BE_BusinessEntity" Multiplicity="1" />
+          <End Role="AC_Account" Type="Self.AC_Account" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BE_BusinessEntity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AC_Account">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BE_AccessList_BE_BusinessEntity">
+          <End Role="BE_BusinessEntity" Type="Self.BE_BusinessEntity" Multiplicity="1" />
+          <End Role="BE_AccessList" Type="Self.BE_AccessList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BE_BusinessEntity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BE_AccessList">
+              <PropertyRef Name="BId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BE_BusinessEntity_BE_Type">
+          <End Role="BE_Type" Type="Self.BE_Type" Multiplicity="1" />
+          <End Role="BE_BusinessEntity" Type="Self.BE_BusinessEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BE_Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BE_BusinessEntity">
+              <PropertyRef Name="BTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BE_BusinessEntity_CM_Guild">
+          <End Role="CM_Guild" Type="Self.CM_Guild" Multiplicity="1" />
+          <End Role="BE_BusinessEntity" Type="Self.BE_BusinessEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CM_Guild">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BE_BusinessEntity">
+              <PropertyRef Name="GuildId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BE_Profile_BE_BusinessEntity">
+          <End Role="BE_BusinessEntity" Type="Self.BE_BusinessEntity" Multiplicity="1" />
+          <End Role="BE_Profile" Type="Self.BE_Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BE_BusinessEntity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BE_Profile">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CM_CellPrefix_CM_Operator">
+          <End Role="CM_Operator" Type="Self.CM_Operator" Multiplicity="1" />
+          <End Role="CM_CellPrefix" Type="Self.CM_CellPrefix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CM_Operator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CM_CellPrefix">
+              <PropertyRef Name="OperatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CM_Operator_BE_BusinessEntity">
+          <End Role="BE_BusinessEntity" Type="Self.BE_BusinessEntity" Multiplicity="1" />
+          <End Role="CM_Operator" Type="Self.CM_Operator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BE_BusinessEntity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CM_Operator">
+              <PropertyRef Name="BId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageID_CM_Messages">
+          <End Role="CM_Messages" Type="Self.CM_Messages" Multiplicity="0..1" />
+          <End Role="CM_Messages_Operator" Type="Self.CM_Messages_Operator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CM_Messages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CM_Messages_Operator">
+              <PropertyRef Name="MessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="NewPrefixFinder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_GetUsername_Bid_Balance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="MsrvMainModelStoreContainer">
+          <EntitySet Name="AC_Account" EntityType="Self.AC_Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AutoRecharge" EntityType="Self.AutoRecharge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BE_AccessList" EntityType="Self.BE_AccessList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BE_BusinessEntity" EntityType="Self.BE_BusinessEntity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BE_Config" EntityType="Self.BE_Config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BE_Counter" EntityType="Self.BE_Counter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BE_Profile" EntityType="Self.BE_Profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BE_Provider" EntityType="Self.BE_Provider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BE_Type" EntityType="Self.BE_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CM_CellPrefix" EntityType="Self.CM_CellPrefix" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CM_Contacts" EntityType="Self.CM_Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CM_Guild" EntityType="Self.CM_Guild" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CM_Messages" EntityType="Self.CM_Messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CM_Operator" EntityType="Self.CM_Operator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Infra_Config" EntityType="Self.Infra_Config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CM_Messages_Operator" EntityType="Self.CM_Messages_Operator" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CM_Messages_Operator].[Id] AS [Id], 
+    [CM_Messages_Operator].[MessageID] AS [MessageID], 
+    [CM_Messages_Operator].[OperatorID] AS [OperatorID], 
+    [CM_Messages_Operator].[ResponseCode] AS [ResponseCode], 
+    [CM_Messages_Operator].[ResponseMessage] AS [ResponseMessage], 
+    [CM_Messages_Operator].[HasRetryChance] AS [HasRetryChance], 
+    [CM_Messages_Operator].[IsActive] AS [IsActive]
+    FROM [dbo].[CM_Messages_Operator] AS [CM_Messages_Operator]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CM_OpBolton" EntityType="Self.CM_OpBolton" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CM_OpBolton].[Id] AS [Id], 
+    [CM_OpBolton].[Title] AS [Title], 
+    [CM_OpBolton].[OpId] AS [OpId], 
+    [CM_OpBolton].[SimType] AS [SimType], 
+    [CM_OpBolton].[eRfillId] AS [eRfillId], 
+    [CM_OpBolton].[MsrId] AS [MsrId], 
+    [CM_OpBolton].[Expiry] AS [Expiry], 
+    [CM_OpBolton].[OriginalAmount] AS [OriginalAmount], 
+    [CM_OpBolton].[AffectiveAmount] AS [AffectiveAmount], 
+    [CM_OpBolton].[Description] AS [Description], 
+    [CM_OpBolton].[VolumeGB] AS [VolumeGB], 
+    [CM_OpBolton].[IsActive] AS [IsActive], 
+    [CM_OpBolton].[CreatedOn] AS [CreatedOn], 
+    [CM_OpBolton].[ModifiedOn] AS [ModifiedOn], 
+    [CM_OpBolton].[pType] AS [pType], 
+    [CM_OpBolton].[OffCode] AS [OffCode]
+    FROM [dbo].[CM_OpBolton] AS [CM_OpBolton]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CM_Order" EntityType="Self.CM_Order" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CM_Order].[Id] AS [Id], 
+    [CM_Order].[ItemId] AS [ItemId], 
+    [CM_Order].[OrderId] AS [OrderId]
+    FROM [dbo].[CM_Order] AS [CM_Order]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Vw_AccessList" EntityType="Self.Vw_AccessList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vw_AccessList].[Id] AS [Id], 
+    [Vw_AccessList].[BId] AS [BId], 
+    [Vw_AccessList].[IpAddress] AS [IpAddress], 
+    [Vw_AccessList].[IsActive] AS [IsActive], 
+    [Vw_AccessList].[CreatedOn] AS [CreatedOn], 
+    [Vw_AccessList].[TitleFa] AS [TitleFa]
+    FROM [dbo].[Vw_AccessList] AS [Vw_AccessList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Vw_BusinessEntity" EntityType="Self.Vw_BusinessEntity" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vw_BusinessEntity].[UserName] AS [UserName], 
+    [Vw_BusinessEntity].[Password] AS [Password], 
+    [Vw_BusinessEntity].[GuildId] AS [GuildId], 
+    [Vw_BusinessEntity].[BTypeId] AS [BTypeId], 
+    [Vw_BusinessEntity].[FName] AS [FName], 
+    [Vw_BusinessEntity].[CompanyName] AS [CompanyName], 
+    [Vw_BusinessEntity].[LName] AS [LName], 
+    [Vw_BusinessEntity].[Email] AS [Email], 
+    [Vw_BusinessEntity].[Address] AS [Address], 
+    [Vw_BusinessEntity].[Mobile] AS [Mobile], 
+    [Vw_BusinessEntity].[Id] AS [Id], 
+    [Vw_BusinessEntity].[ParentId] AS [ParentId], 
+    [Vw_BusinessEntity].[IsActive] AS [IsActive], 
+    [Vw_BusinessEntity].[TryCount] AS [TryCount], 
+    [Vw_BusinessEntity].[BalanceAmount] AS [BalanceAmount], 
+    [Vw_BusinessEntity].[IsPostPaid] AS [IsPostPaid], 
+    [Vw_BusinessEntity].[MinAmount] AS [MinAmount], 
+    [Vw_BusinessEntity].[MaxAmount] AS [MaxAmount], 
+    [Vw_BusinessEntity].[TraceEntityId] AS [TraceEntityId], 
+    [Vw_BusinessEntity].[RefNumId] AS [RefNumId], 
+    [Vw_BusinessEntity].[LastResNum] AS [LastResNum], 
+    [Vw_BusinessEntity].[TitleFa] AS [TitleFa], 
+    [Vw_BusinessEntity].[Title_Typ] AS [Title_Typ], 
+    [Vw_BusinessEntity].[Title_G] AS [Title_G]
+    FROM [dbo].[Vw_BusinessEntity] AS [Vw_BusinessEntity]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Vw_OpBolton" EntityType="Self.Vw_OpBolton" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vw_OpBolton].[Id] AS [Id], 
+    [Vw_OpBolton].[Title] AS [Title], 
+    [Vw_OpBolton].[OpId] AS [OpId], 
+    [Vw_OpBolton].[SimType] AS [SimType], 
+    [Vw_OpBolton].[eRfillId] AS [eRfillId], 
+    [Vw_OpBolton].[MsrId] AS [MsrId], 
+    [Vw_OpBolton].[Expiry] AS [Expiry], 
+    [Vw_OpBolton].[OriginalAmount] AS [OriginalAmount], 
+    [Vw_OpBolton].[AffectiveAmount] AS [AffectiveAmount], 
+    [Vw_OpBolton].[Description] AS [Description], 
+    [Vw_OpBolton].[VolumeGB] AS [VolumeGB], 
+    [Vw_OpBolton].[IsActive] AS [IsActive], 
+    [Vw_OpBolton].[CreatedOn] AS [CreatedOn], 
+    [Vw_OpBolton].[ModifiedOn] AS [ModifiedOn], 
+    [Vw_OpBolton].[pType] AS [pType], 
+    [Vw_OpBolton].[OrderId] AS [OrderId]
+    FROM [dbo].[Vw_OpBolton] AS [Vw_OpBolton]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AC_Account_BE_BusinessEntity1" Association="Self.FK_AC_Account_BE_BusinessEntity1">
+            <End Role="BE_BusinessEntity" EntitySet="BE_BusinessEntity" />
+            <End Role="AC_Account" EntitySet="AC_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BE_AccessList_BE_BusinessEntity" Association="Self.FK_BE_AccessList_BE_BusinessEntity">
+            <End Role="BE_BusinessEntity" EntitySet="BE_BusinessEntity" />
+            <End Role="BE_AccessList" EntitySet="BE_AccessList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BE_BusinessEntity_BE_Type" Association="Self.FK_BE_BusinessEntity_BE_Type">
+            <End Role="BE_Type" EntitySet="BE_Type" />
+            <End Role="BE_BusinessEntity" EntitySet="BE_BusinessEntity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BE_BusinessEntity_CM_Guild" Association="Self.FK_BE_BusinessEntity_CM_Guild">
+            <End Role="CM_Guild" EntitySet="CM_Guild" />
+            <End Role="BE_BusinessEntity" EntitySet="BE_BusinessEntity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BE_Profile_BE_BusinessEntity" Association="Self.FK_BE_Profile_BE_BusinessEntity">
+            <End Role="BE_BusinessEntity" EntitySet="BE_BusinessEntity" />
+            <End Role="BE_Profile" EntitySet="BE_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CM_CellPrefix_CM_Operator" Association="Self.FK_CM_CellPrefix_CM_Operator">
+            <End Role="CM_Operator" EntitySet="CM_Operator" />
+            <End Role="CM_CellPrefix" EntitySet="CM_CellPrefix" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CM_Operator_BE_BusinessEntity" Association="Self.FK_CM_Operator_BE_BusinessEntity">
+            <End Role="BE_BusinessEntity" EntitySet="BE_BusinessEntity" />
+            <End Role="CM_Operator" EntitySet="CM_Operator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageID_CM_Messages" Association="Self.FK_MessageID_CM_Messages">
+            <End Role="CM_Messages" EntitySet="CM_Messages" />
+            <End Role="CM_Messages_Operator" EntitySet="CM_Messages_Operator" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MsrvMainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AC_Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="TitleFa" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TitleEn" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BankAccountNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IBAN" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BalanceAmount" Type="Decimal" Precision="21" Scale="0" Nullable="false" />
+          <Property Name="IsPostPaid" Type="Boolean" Nullable="false" />
+          <Property Name="MinAmount" Type="Decimal" Precision="21" Scale="0" />
+          <Property Name="MaxAmount" Type="Decimal" Precision="21" Scale="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BE_AccessList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BId" Type="Int64" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BE_BusinessEntity" Relationship="MsrvMainModel.FK_BE_AccessList_BE_BusinessEntity" FromRole="BE_AccessList" ToRole="BE_BusinessEntity" />
+        </EntityType>
+        <EntityType Name="BE_BusinessEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="TitleFa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TitleEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="GuildId" Type="Int32" Nullable="false" />
+          <Property Name="BTypeId" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TryCount" Type="Byte" />
+          <Property Name="LastResNum" Type="Int64" />
+          <Property Name="TraceEntityId" Type="Int32" />
+          <Property Name="RefNumId" Type="Int32" />
+          <Property Name="IsReserved" Type="Boolean" />
+          <NavigationProperty Name="BE_AccessList" Relationship="MsrvMainModel.FK_BE_AccessList_BE_BusinessEntity" FromRole="BE_BusinessEntity" ToRole="BE_AccessList" />
+          <NavigationProperty Name="BE_Type" Relationship="MsrvMainModel.FK_BE_BusinessEntity_BE_Type" FromRole="BE_BusinessEntity" ToRole="BE_Type" />
+          <NavigationProperty Name="CM_Guild" Relationship="MsrvMainModel.FK_BE_BusinessEntity_CM_Guild" FromRole="BE_BusinessEntity" ToRole="CM_Guild" />
+          <NavigationProperty Name="CM_Operator" Relationship="MsrvMainModel.FK_CM_Operator_BE_BusinessEntity" FromRole="BE_BusinessEntity" ToRole="CM_Operator" />
+        </EntityType>
+        <EntityType Name="BE_Config">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="QLen" Type="Int32" Nullable="false" />
+          <Property Name="NumberListLen" Type="Byte" Nullable="false" />
+          <Property Name="Bill" Type="Boolean" Nullable="false" />
+          <Property Name="Purchase" Type="Boolean" Nullable="false" />
+          <Property Name="PinCharge" Type="Boolean" Nullable="false" />
+          <Property Name="TopUp" Type="Boolean" Nullable="false" />
+          <Property Name="MTN" Type="Boolean" Nullable="false" />
+          <Property Name="MCI" Type="Boolean" Nullable="false" />
+          <Property Name="Rightel" Type="Boolean" Nullable="false" />
+          <Property Name="OtherOperator" Type="Boolean" Nullable="false" />
+          <Property Name="Balance" Type="Boolean" Nullable="false" />
+          <Property Name="MultiChage" Type="Boolean" Nullable="false" />
+          <Property Name="ReverseTxn" Type="Boolean" Nullable="false" />
+          <Property Name="Firewall" Type="Boolean" />
+          <Property Name="Resevre1" Type="Boolean" />
+          <Property Name="Reserve2" Type="Boolean" />
+          <Property Name="Reserve3" Type="Boolean" />
+          <Property Name="Reserve4" Type="Boolean" />
+          <Property Name="Reserve5" Type="Boolean" />
+          <Property Name="UniqueRequest" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="BE_Counter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastId" Type="Int64" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BE_Profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EnCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EnFName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EnLName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="3" />
+          <Property Name="NationalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Byte" />
+          <Property Name="RegDate" Type="DateTime" Precision="3" />
+          <Property Name="RegCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OtherTell" Type="String" MaxLength="220" FixedLength="false" Unicode="true" />
+          <Property Name="OtherEmail" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="OtherAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BE_Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleFa" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TitleEn" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="BE_BusinessEntity" Relationship="MsrvMainModel.FK_BE_BusinessEntity_BE_Type" FromRole="BE_Type" ToRole="BE_BusinessEntity" />
+        </EntityType>
+        <EntityType Name="CM_CellPrefix">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prefix" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OperatorId" Type="Byte" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CM_Operator" Relationship="MsrvMainModel.FK_CM_CellPrefix_CM_Operator" FromRole="CM_CellPrefix" ToRole="CM_Operator" />
+        </EntityType>
+        <EntityType Name="CM_Contacts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CellNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CM_Guild">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="TitleFa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TitleEn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LocalId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PublicId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BE_BusinessEntity" Relationship="MsrvMainModel.FK_BE_BusinessEntity_CM_Guild" FromRole="CM_Guild" ToRole="BE_BusinessEntity" />
+        </EntityType>
+        <EntityType Name="CM_Messages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TitleEn" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TitleFa" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Detail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Help" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorType" Type="Byte" Nullable="false" />
+          <Property Name="Condition" Type="Byte" />
+          <Property Name="IsAcitve" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CM_Messages_Operator" Relationship="MsrvMainModel.FK_MessageID_CM_Messages" FromRole="CM_Messages" ToRole="CM_Messages_Operator" />
+        </EntityType>
+        <EntityType Name="CM_Operator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Identifier" Type="Byte" Nullable="false" />
+          <Property Name="BId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="BE_BusinessEntity" Relationship="MsrvMainModel.FK_CM_Operator_BE_BusinessEntity" FromRole="CM_Operator" ToRole="BE_BusinessEntity" />
+          <NavigationProperty Name="CM_CellPrefix" Relationship="MsrvMainModel.FK_CM_CellPrefix_CM_Operator" FromRole="CM_Operator" ToRole="CM_CellPrefix" />
+        </EntityType>
+        <EntityType Name="Infra_Config">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="BaseChannelId" Type="Byte" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Vw_BusinessEntity">
+          <Key>
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="GuildId" />
+            <PropertyRef Name="BTypeId" />
+            <PropertyRef Name="FName" />
+            <PropertyRef Name="LName" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="BalanceAmount" />
+            <PropertyRef Name="IsPostPaid" />
+            <PropertyRef Name="TitleFa" />
+            <PropertyRef Name="Title_Typ" />
+            <PropertyRef Name="Title_G" />
+          </Key>
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GuildId" Type="Int32" Nullable="false" />
+          <Property Name="BTypeId" Type="Int32" Nullable="false" />
+          <Property Name="FName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="TryCount" Type="Byte" />
+          <Property Name="BalanceAmount" Type="Decimal" Precision="21" Scale="0" Nullable="false" />
+          <Property Name="IsPostPaid" Type="Boolean" Nullable="false" />
+          <Property Name="MinAmount" Type="Decimal" Precision="21" Scale="0" />
+          <Property Name="MaxAmount" Type="Decimal" Precision="21" Scale="0" />
+          <Property Name="TraceEntityId" Type="Int32" />
+          <Property Name="RefNumId" Type="Int32" />
+          <Property Name="LastResNum" Type="Int64" />
+          <Property Name="TitleFa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title_Typ" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title_G" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MsrvMainEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AC_Account" EntityType="Self.AC_Account" />
+          <EntitySet Name="BE_AccessList" EntityType="Self.BE_AccessList" />
+          <EntitySet Name="BE_BusinessEntity" EntityType="Self.BE_BusinessEntity" />
+          <EntitySet Name="BE_Config" EntityType="Self.BE_Config" />
+          <EntitySet Name="BE_Counter" EntityType="Self.BE_Counter" />
+          <EntitySet Name="BE_Profile" EntityType="Self.BE_Profile" />
+          <EntitySet Name="BE_Type" EntityType="Self.BE_Type" />
+          <EntitySet Name="CM_CellPrefix" EntityType="Self.CM_CellPrefix" />
+          <EntitySet Name="CM_Contacts" EntityType="Self.CM_Contacts" />
+          <EntitySet Name="CM_Guild" EntityType="Self.CM_Guild" />
+          <EntitySet Name="CM_Messages" EntityType="Self.CM_Messages" />
+          <EntitySet Name="CM_Operator" EntityType="Self.CM_Operator" />
+          <EntitySet Name="Infra_Config" EntityType="Self.Infra_Config" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Vw_BusinessEntity" EntityType="Self.Vw_BusinessEntity" />
+          <FunctionImport Name="NewPrefixFinder" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetUsername_Bid_Balance" ReturnType="Collection(MsrvMainModel.sp_GetUsername_Bid_Balance_Result)">
+          <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MsrvMainModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MsrvMainModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="AutoRecharges" EntityType="MsrvMainModel.AutoRecharge" />
+          <EntitySet Name="BE_Provider" EntityType="MsrvMainModel.BE_Provider" />
+          <EntitySet Name="CM_Messages_Operator" EntityType="MsrvMainModel.CM_Messages_Operator" />
+          <EntitySet Name="CM_OpBolton" EntityType="MsrvMainModel.CM_OpBolton" />
+          <EntitySet Name="CM_Order" EntityType="MsrvMainModel.CM_Order" />
+          <EntitySet Name="Vw_AccessList" EntityType="MsrvMainModel.Vw_AccessList" />
+          <EntitySet Name="Vw_OpBolton" EntityType="MsrvMainModel.Vw_OpBolton" />
+          <AssociationSet Name="FK_BE_AccessList_BE_BusinessEntity" Association="MsrvMainModel.FK_BE_AccessList_BE_BusinessEntity">
+            <End Role="BE_BusinessEntity" EntitySet="BE_BusinessEntity" />
+            <End Role="BE_AccessList" EntitySet="BE_AccessList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BE_BusinessEntity_BE_Type" Association="MsrvMainModel.FK_BE_BusinessEntity_BE_Type">
+            <End Role="BE_Type" EntitySet="BE_Type" />
+            <End Role="BE_BusinessEntity" EntitySet="BE_BusinessEntity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BE_BusinessEntity_CM_Guild" Association="MsrvMainModel.FK_BE_BusinessEntity_CM_Guild">
+            <End Role="CM_Guild" EntitySet="CM_Guild" />
+            <End Role="BE_BusinessEntity" EntitySet="BE_BusinessEntity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CM_Operator_BE_BusinessEntity" Association="MsrvMainModel.FK_CM_Operator_BE_BusinessEntity">
+            <End Role="BE_BusinessEntity" EntitySet="BE_BusinessEntity" />
+            <End Role="CM_Operator" EntitySet="CM_Operator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CM_CellPrefix_CM_Operator" Association="MsrvMainModel.FK_CM_CellPrefix_CM_Operator">
+            <End Role="CM_Operator" EntitySet="CM_Operator" />
+            <End Role="CM_CellPrefix" EntitySet="CM_CellPrefix" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageID_CM_Messages" Association="MsrvMainModel.FK_MessageID_CM_Messages">
+            <End Role="CM_Messages" EntitySet="CM_Messages" />
+            <End Role="CM_Messages_Operator" EntitySet="CM_Messages_Operator" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="sp_GetUsername_Bid_Balance_Result">
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="BalanceAmount" Nullable="false" Precision="21" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="AutoRecharge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BId" Type="Int64" Nullable="false" />
+          <Property Name="CellNumber" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="SimType" Type="Byte" Nullable="false" />
+          <Property Name="ChargeType" Type="Byte" Nullable="false" />
+          <Property Name="Service_Id" Type="Byte" />
+          <Property Name="Threshold_Id" Type="Byte" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="RechargeAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BE_Provider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BId" Type="Int64" Nullable="false" />
+          <Property Name="OpeatorId" Type="Byte" Nullable="false" />
+          <Property Name="Provider" Type="Byte" Nullable="false" />
+          <Property Name="Priority" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CM_Messages_Operator">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OperatorID" />
+            <PropertyRef Name="ResponseCode" />
+            <PropertyRef Name="HasRetryChance" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MessageID" Type="Int32" />
+          <Property Name="OperatorID" Type="Byte" Nullable="false" />
+          <Property Name="ResponseCode" Type="Int32" Nullable="false" />
+          <Property Name="ResponseMessage" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HasRetryChance" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CM_Messages" Relationship="MsrvMainModel.FK_MessageID_CM_Messages" FromRole="CM_Messages_Operator" ToRole="CM_Messages" />
+        </EntityType>
+        <EntityType Name="CM_OpBolton">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OpId" />
+            <PropertyRef Name="SimType" />
+            <PropertyRef Name="eRfillId" />
+            <PropertyRef Name="MsrId" />
+            <PropertyRef Name="Expiry" />
+            <PropertyRef Name="OriginalAmount" />
+            <PropertyRef Name="AffectiveAmount" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="VolumeGB" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="CreatedOn" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="OpId" Type="Int32" Nullable="false" />
+          <Property Name="SimType" Type="Byte" Nullable="false" />
+          <Property Name="eRfillId" Type="Int32" Nullable="false" />
+          <Property Name="MsrId" Type="Int32" Nullable="false" />
+          <Property Name="Expiry" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OriginalAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AffectiveAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="VolumeGB" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="pType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OffCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CM_Order">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vw_AccessList">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="BId" />
+            <PropertyRef Name="IpAddress" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="CreatedOn" />
+            <PropertyRef Name="TitleFa" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="BId" Type="Int64" Nullable="false" />
+          <Property Name="IpAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TitleFa" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Vw_OpBolton">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OpId" />
+            <PropertyRef Name="SimType" />
+            <PropertyRef Name="eRfillId" />
+            <PropertyRef Name="MsrId" />
+            <PropertyRef Name="Expiry" />
+            <PropertyRef Name="OriginalAmount" />
+            <PropertyRef Name="AffectiveAmount" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="VolumeGB" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="CreatedOn" />
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="OpId" Type="Int32" Nullable="false" />
+          <Property Name="SimType" Type="Byte" Nullable="false" />
+          <Property Name="eRfillId" Type="Int32" Nullable="false" />
+          <Property Name="MsrId" Type="Int32" Nullable="false" />
+          <Property Name="Expiry" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OriginalAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AffectiveAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="VolumeGB" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="pType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BE_AccessList_BE_BusinessEntity">
+          <End Type="MsrvMainModel.BE_BusinessEntity" Role="BE_BusinessEntity" Multiplicity="1" />
+          <End Type="MsrvMainModel.BE_AccessList" Role="BE_AccessList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BE_BusinessEntity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BE_AccessList">
+              <PropertyRef Name="BId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BE_BusinessEntity_BE_Type">
+          <End Type="MsrvMainModel.BE_Type" Role="BE_Type" Multiplicity="1" />
+          <End Type="MsrvMainModel.BE_BusinessEntity" Role="BE_BusinessEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BE_Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BE_BusinessEntity">
+              <PropertyRef Name="BTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BE_BusinessEntity_CM_Guild">
+          <End Type="MsrvMainModel.CM_Guild" Role="CM_Guild" Multiplicity="1" />
+          <End Type="MsrvMainModel.BE_BusinessEntity" Role="BE_BusinessEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CM_Guild">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BE_BusinessEntity">
+              <PropertyRef Name="GuildId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CM_Operator_BE_BusinessEntity">
+          <End Type="MsrvMainModel.BE_BusinessEntity" Role="BE_BusinessEntity" Multiplicity="1" />
+          <End Type="MsrvMainModel.CM_Operator" Role="CM_Operator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BE_BusinessEntity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CM_Operator">
+              <PropertyRef Name="BId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CM_CellPrefix_CM_Operator">
+          <End Type="MsrvMainModel.CM_Operator" Role="CM_Operator" Multiplicity="1" />
+          <End Type="MsrvMainModel.CM_CellPrefix" Role="CM_CellPrefix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CM_Operator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CM_CellPrefix">
+              <PropertyRef Name="OperatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageID_CM_Messages">
+          <End Type="MsrvMainModel.CM_Messages" Role="CM_Messages" Multiplicity="0..1" />
+          <End Type="MsrvMainModel.CM_Messages_Operator" Role="CM_Messages_Operator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CM_Messages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CM_Messages_Operator">
+              <PropertyRef Name="MessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MsrvMainModelStoreContainer" CdmEntityContainer="MsrvMainEntities">
+          <EntitySetMapping Name="AC_Account">
+            <EntityTypeMapping TypeName="MsrvMainModel.AC_Account">
+              <MappingFragment StoreEntitySet="AC_Account">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TitleFa" ColumnName="TitleFa" />
+                <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+                <ScalarProperty Name="BankAccountNO" ColumnName="BankAccountNO" />
+                <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+                <ScalarProperty Name="BalanceAmount" ColumnName="BalanceAmount" />
+                <ScalarProperty Name="IsPostPaid" ColumnName="IsPostPaid" />
+                <ScalarProperty Name="MinAmount" ColumnName="MinAmount" />
+                <ScalarProperty Name="MaxAmount" ColumnName="MaxAmount" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BE_AccessList">
+            <EntityTypeMapping TypeName="MsrvMainModel.BE_AccessList">
+              <MappingFragment StoreEntitySet="BE_AccessList">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BE_BusinessEntity">
+            <EntityTypeMapping TypeName="MsrvMainModel.BE_BusinessEntity">
+              <MappingFragment StoreEntitySet="BE_BusinessEntity">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="TitleFa" ColumnName="TitleFa" />
+                <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="GuildId" ColumnName="GuildId" />
+                <ScalarProperty Name="BTypeId" ColumnName="BTypeId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="TryCount" ColumnName="TryCount" />
+                <ScalarProperty Name="LastResNum" ColumnName="LastResNum" />
+                <ScalarProperty Name="TraceEntityId" ColumnName="TraceEntityId" />
+                <ScalarProperty Name="RefNumId" ColumnName="RefNumId" />
+                <ScalarProperty Name="IsReserved" ColumnName="IsReserved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BE_Config">
+            <EntityTypeMapping TypeName="MsrvMainModel.BE_Config">
+              <MappingFragment StoreEntitySet="BE_Config">
+                <ScalarProperty Name="UniqueRequest" ColumnName="UniqueRequest" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="QLen" ColumnName="QLen" />
+                <ScalarProperty Name="NumberListLen" ColumnName="NumberListLen" />
+                <ScalarProperty Name="Bill" ColumnName="Bill" />
+                <ScalarProperty Name="Purchase" ColumnName="Purchase" />
+                <ScalarProperty Name="PinCharge" ColumnName="PinCharge" />
+                <ScalarProperty Name="TopUp" ColumnName="TopUp" />
+                <ScalarProperty Name="MTN" ColumnName="MTN" />
+                <ScalarProperty Name="MCI" ColumnName="MCI" />
+                <ScalarProperty Name="Rightel" ColumnName="Rightel" />
+                <ScalarProperty Name="OtherOperator" ColumnName="OtherOperator" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="MultiChage" ColumnName="MultiChage" />
+                <ScalarProperty Name="ReverseTxn" ColumnName="ReverseTxn" />
+                <ScalarProperty Name="Firewall" ColumnName="Firewall" />
+                <ScalarProperty Name="Resevre1" ColumnName="Resevre1" />
+                <ScalarProperty Name="Reserve2" ColumnName="Reserve2" />
+                <ScalarProperty Name="Reserve3" ColumnName="Reserve3" />
+                <ScalarProperty Name="Reserve4" ColumnName="Reserve4" />
+                <ScalarProperty Name="Reserve5" ColumnName="Reserve5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BE_Counter">
+            <EntityTypeMapping TypeName="MsrvMainModel.BE_Counter">
+              <MappingFragment StoreEntitySet="BE_Counter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LastId" ColumnName="LastId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BE_Profile">
+            <EntityTypeMapping TypeName="MsrvMainModel.BE_Profile">
+              <MappingFragment StoreEntitySet="BE_Profile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="EnCompanyName" ColumnName="EnCompanyName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="EnFName" ColumnName="EnFName" />
+                <ScalarProperty Name="EnLName" ColumnName="EnLName" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+                <ScalarProperty Name="RegCode" ColumnName="RegCode" />
+                <ScalarProperty Name="OtherTell" ColumnName="OtherTell" />
+                <ScalarProperty Name="OtherEmail" ColumnName="OtherEmail" />
+                <ScalarProperty Name="OtherAddress" ColumnName="OtherAddress" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BE_Type">
+            <EntityTypeMapping TypeName="MsrvMainModel.BE_Type">
+              <MappingFragment StoreEntitySet="BE_Type">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TitleFa" ColumnName="TitleFa" />
+                <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CM_CellPrefix">
+            <EntityTypeMapping TypeName="MsrvMainModel.CM_CellPrefix">
+              <MappingFragment StoreEntitySet="CM_CellPrefix">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="OperatorId" ColumnName="OperatorId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CM_Contacts">
+            <EntityTypeMapping TypeName="MsrvMainModel.CM_Contacts">
+              <MappingFragment StoreEntitySet="CM_Contacts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CellNumber" ColumnName="CellNumber" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CM_Guild">
+            <EntityTypeMapping TypeName="MsrvMainModel.CM_Guild">
+              <MappingFragment StoreEntitySet="CM_Guild">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="TitleFa" ColumnName="TitleFa" />
+                <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+                <ScalarProperty Name="LocalId" ColumnName="LocalId" />
+                <ScalarProperty Name="PublicId" ColumnName="PublicId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CM_Messages">
+            <EntityTypeMapping TypeName="MsrvMainModel.CM_Messages">
+              <MappingFragment StoreEntitySet="CM_Messages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+                <ScalarProperty Name="TitleFa" ColumnName="TitleFa" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Help" ColumnName="Help" />
+                <ScalarProperty Name="ErrorType" ColumnName="ErrorType" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="IsAcitve" ColumnName="IsAcitve" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CM_Operator">
+            <EntityTypeMapping TypeName="MsrvMainModel.CM_Operator">
+              <MappingFragment StoreEntitySet="CM_Operator">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Infra_Config">
+            <EntityTypeMapping TypeName="MsrvMainModel.Infra_Config">
+              <MappingFragment StoreEntitySet="Infra_Config">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="BaseChannelId" ColumnName="BaseChannelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MsrvMainModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vw_BusinessEntity">
+            <EntityTypeMapping TypeName="MsrvMainModel.Vw_BusinessEntity">
+              <MappingFragment StoreEntitySet="Vw_BusinessEntity">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="GuildId" ColumnName="GuildId" />
+                <ScalarProperty Name="BTypeId" ColumnName="BTypeId" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TryCount" ColumnName="TryCount" />
+                <ScalarProperty Name="BalanceAmount" ColumnName="BalanceAmount" />
+                <ScalarProperty Name="IsPostPaid" ColumnName="IsPostPaid" />
+                <ScalarProperty Name="MinAmount" ColumnName="MinAmount" />
+                <ScalarProperty Name="MaxAmount" ColumnName="MaxAmount" />
+                <ScalarProperty Name="TraceEntityId" ColumnName="TraceEntityId" />
+                <ScalarProperty Name="RefNumId" ColumnName="RefNumId" />
+                <ScalarProperty Name="LastResNum" ColumnName="LastResNum" />
+                <ScalarProperty Name="TitleFa" ColumnName="TitleFa" />
+                <ScalarProperty Name="Title_Typ" ColumnName="Title_Typ" />
+                <ScalarProperty Name="Title_G" ColumnName="Title_G" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="NewPrefixFinder" FunctionName="MsrvMainModel.Store.NewPrefixFinder" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="MsrvMainModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="MsrvMainModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="MsrvMainModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_GetUsername_Bid_Balance" FunctionName="MsrvMainModel.Store.sp_GetUsername_Bid_Balance">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MsrvMainModel.sp_GetUsername_Bid_Balance_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="BalanceAmount" ColumnName="BalanceAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="MsrvMainModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MsrvMainModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="MsrvMainModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MsrvMainModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MsrvMainModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MsrvMainModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="AutoRecharges">
+            <EntityTypeMapping TypeName="MsrvMainModel.AutoRecharge">
+              <MappingFragment StoreEntitySet="AutoRecharge">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RechargeAmount" ColumnName="RechargeAmount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Threshold_Id" ColumnName="Threshold_Id" />
+                <ScalarProperty Name="Service_Id" ColumnName="Service_Id" />
+                <ScalarProperty Name="ChargeType" ColumnName="ChargeType" />
+                <ScalarProperty Name="SimType" ColumnName="SimType" />
+                <ScalarProperty Name="CellNumber" ColumnName="CellNumber" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BE_Provider">
+            <EntityTypeMapping TypeName="MsrvMainModel.BE_Provider">
+              <MappingFragment StoreEntitySet="BE_Provider">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="OpeatorId" ColumnName="OpeatorId" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CM_Messages_Operator">
+            <EntityTypeMapping TypeName="MsrvMainModel.CM_Messages_Operator">
+              <MappingFragment StoreEntitySet="CM_Messages_Operator">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="HasRetryChance" ColumnName="HasRetryChance" />
+                <ScalarProperty Name="ResponseMessage" ColumnName="ResponseMessage" />
+                <ScalarProperty Name="ResponseCode" ColumnName="ResponseCode" />
+                <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CM_OpBolton">
+            <EntityTypeMapping TypeName="MsrvMainModel.CM_OpBolton">
+              <MappingFragment StoreEntitySet="CM_OpBolton">
+                <ScalarProperty Name="OffCode" ColumnName="OffCode" />
+                <ScalarProperty Name="pType" ColumnName="pType" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="VolumeGB" ColumnName="VolumeGB" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AffectiveAmount" ColumnName="AffectiveAmount" />
+                <ScalarProperty Name="OriginalAmount" ColumnName="OriginalAmount" />
+                <ScalarProperty Name="Expiry" ColumnName="Expiry" />
+                <ScalarProperty Name="MsrId" ColumnName="MsrId" />
+                <ScalarProperty Name="eRfillId" ColumnName="eRfillId" />
+                <ScalarProperty Name="SimType" ColumnName="SimType" />
+                <ScalarProperty Name="OpId" ColumnName="OpId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CM_Order">
+            <EntityTypeMapping TypeName="MsrvMainModel.CM_Order">
+              <MappingFragment StoreEntitySet="CM_Order">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vw_AccessList">
+            <EntityTypeMapping TypeName="MsrvMainModel.Vw_AccessList">
+              <MappingFragment StoreEntitySet="Vw_AccessList">
+                <ScalarProperty Name="TitleFa" ColumnName="TitleFa" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vw_OpBolton">
+            <EntityTypeMapping TypeName="MsrvMainModel.Vw_OpBolton">
+              <MappingFragment StoreEntitySet="Vw_OpBolton">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="pType" ColumnName="pType" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="VolumeGB" ColumnName="VolumeGB" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AffectiveAmount" ColumnName="AffectiveAmount" />
+                <ScalarProperty Name="OriginalAmount" ColumnName="OriginalAmount" />
+                <ScalarProperty Name="Expiry" ColumnName="Expiry" />
+                <ScalarProperty Name="MsrId" ColumnName="MsrId" />
+                <ScalarProperty Name="eRfillId" ColumnName="eRfillId" />
+                <ScalarProperty Name="SimType" ColumnName="SimType" />
+                <ScalarProperty Name="OpId" ColumnName="OpId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

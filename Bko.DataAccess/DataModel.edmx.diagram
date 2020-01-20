@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="928b9cb49c2c4fac98f3aa718366ffef" Name="Diagram1" ZoomLevel="18">
+        <EntityTypeShape EntityType="MsrvMainModel.AC_Account" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MsrvMainModel.BE_AccessList" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MsrvMainModel.BE_BusinessEntity" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MsrvMainModel.BE_Config" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MsrvMainModel.BE_Counter" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MsrvMainModel.BE_Profile" Width="1.5" PointX="5.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MsrvMainModel.BE_Type" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MsrvMainModel.CM_CellPrefix" Width="1.5" PointX="7.5" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="MsrvMainModel.CM_Contacts" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MsrvMainModel.CM_Guild" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MsrvMainModel.CM_Messages" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MsrvMainModel.CM_Operator" Width="1.5" PointX="5.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MsrvMainModel.Infra_Config" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MsrvMainModel.User" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MsrvMainModel.Vw_BusinessEntity" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MsrvMainModel.AutoRecharge" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MsrvMainModel.BE_Provider" Width="1.5" PointX="12.375" PointY="5.75" />
+        <EntityTypeShape EntityType="MsrvMainModel.CM_Messages_Operator" Width="1.5" PointX="10" PointY="10.875" />
+        <EntityTypeShape EntityType="MsrvMainModel.CM_OpBolton" Width="1.5" PointX="12.375" PointY="8.75" />
+        <EntityTypeShape EntityType="MsrvMainModel.CM_Order" Width="1.5" PointX="12.375" PointY="13.75" />
+        <EntityTypeShape EntityType="MsrvMainModel.Vw_AccessList" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MsrvMainModel.Vw_OpBolton" Width="1.5" PointX="14.375" PointY="3.75" />
+        <AssociationConnector Association="MsrvMainModel.FK_BE_AccessList_BE_BusinessEntity" />
+        <AssociationConnector Association="MsrvMainModel.FK_BE_BusinessEntity_BE_Type" />
+        <AssociationConnector Association="MsrvMainModel.FK_BE_BusinessEntity_CM_Guild" />
+        <AssociationConnector Association="MsrvMainModel.FK_CM_Operator_BE_BusinessEntity" />
+        <AssociationConnector Association="MsrvMainModel.FK_CM_CellPrefix_CM_Operator" />
+        <AssociationConnector Association="MsrvMainModel.FK_MessageID_CM_Messages" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MRS.MonitoringService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MRS.MonitoringService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfAccessModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AccessModel" nillable="true" type="tns:AccessModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccessModel" nillable="true" type="tns:ArrayOfAccessModel" />
+  <xs:complexType name="AccessModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BusinessEntityId" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="TitleEn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TitleFa" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccessModel" nillable="true" type="tns:AccessModel" />
+</xs:schema>

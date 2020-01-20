@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MonitorinSrv" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http:///Monitoring?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http:///Monitoring?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http:///Monitoring?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http:///Monitoring?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MRS.MonitoringService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMonitorinSrv_ResourceStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResourceStatus" />
+  </wsdl:message>
+  <wsdl:message name="IMonitorinSrv_ResourceStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResourceStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitorinSrv_Ping_InputMessage">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="IMonitorinSrv_Ping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitorinSrv_OperatorState_InputMessage">
+    <wsdl:part name="parameters" element="tns:OperatorState" />
+  </wsdl:message>
+  <wsdl:message name="IMonitorinSrv_OperatorState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OperatorStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitorinSrv_RefreshCache_InputMessage">
+    <wsdl:part name="parameters" element="tns:RefreshCache" />
+  </wsdl:message>
+  <wsdl:message name="IMonitorinSrv_RefreshCache_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RefreshCacheResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitorinSrv_ProviderWalletBalance_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProviderWalletBalance" />
+  </wsdl:message>
+  <wsdl:message name="IMonitorinSrv_ProviderWalletBalance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProviderWalletBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitorinSrv_GetBEBalance_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBEBalance" />
+  </wsdl:message>
+  <wsdl:message name="IMonitorinSrv_GetBEBalance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBEBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitorinSrv_FireWallResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:FireWallResult" />
+  </wsdl:message>
+  <wsdl:message name="IMonitorinSrv_FireWallResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FireWallResultResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMonitorinSrv">
+    <wsdl:operation name="ResourceStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitorinSrv/ResourceStatus" message="tns:IMonitorinSrv_ResourceStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitorinSrv/ResourceStatusResponse" message="tns:IMonitorinSrv_ResourceStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitorinSrv/Ping" message="tns:IMonitorinSrv_Ping_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitorinSrv/PingResponse" message="tns:IMonitorinSrv_Ping_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OperatorState">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitorinSrv/OperatorState" message="tns:IMonitorinSrv_OperatorState_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitorinSrv/OperatorStateResponse" message="tns:IMonitorinSrv_OperatorState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RefreshCache">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitorinSrv/RefreshCache" message="tns:IMonitorinSrv_RefreshCache_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitorinSrv/RefreshCacheResponse" message="tns:IMonitorinSrv_RefreshCache_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProviderWalletBalance">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitorinSrv/ProviderWalletBalance" message="tns:IMonitorinSrv_ProviderWalletBalance_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitorinSrv/ProviderWalletBalanceResponse" message="tns:IMonitorinSrv_ProviderWalletBalance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBEBalance">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitorinSrv/GetBEBalance" message="tns:IMonitorinSrv_GetBEBalance_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitorinSrv/GetBEBalanceResponse" message="tns:IMonitorinSrv_GetBEBalance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FireWallResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitorinSrv/FireWallResult" message="tns:IMonitorinSrv_FireWallResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitorinSrv/FireWallResultResponse" message="tns:IMonitorinSrv_FireWallResult_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IMonitorinSrv" type="tns:IMonitorinSrv">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ResourceStatus">
+      <soap:operation soapAction="http://tempuri.org/IMonitorinSrv/ResourceStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://tempuri.org/IMonitorinSrv/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OperatorState">
+      <soap:operation soapAction="http://tempuri.org/IMonitorinSrv/OperatorState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefreshCache">
+      <soap:operation soapAction="http://tempuri.org/IMonitorinSrv/RefreshCache" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProviderWalletBalance">
+      <soap:operation soapAction="http://tempuri.org/IMonitorinSrv/ProviderWalletBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBEBalance">
+      <soap:operation soapAction="http://tempuri.org/IMonitorinSrv/GetBEBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FireWallResult">
+      <soap:operation soapAction="http://tempuri.org/IMonitorinSrv/FireWallResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MonitorinSrv">
+    <wsdl:port name="BasicHttpBinding_IMonitorinSrv" binding="tns:BasicHttpBinding_IMonitorinSrv">
+      <soap:address location="http:///Monitoring" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
