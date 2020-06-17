@@ -36,8 +36,14 @@ namespace Bko.Business
             var customer = (from op in _main.BE_BusinessEntity
                             select op)
                  .ToList();
-            var c = customer.FirstOrDefault(a => a.Id == long.Parse(bid));
-            return c.TitleFa;
+            // var c = customer.FirstOrDefault(a => a.Id == long.Parse(bid));
+            // return c.TitleFa;
+            var c = customer.Where(a => a.Id == long.Parse(bid))
+                    .Select(a => a.TitleFa)
+                    .DefaultIfEmpty("Unknown")
+                    .First();
+            return c;
+
         }
         public BE_BusinessEntity GetCustomer(string currentUser)
         {
