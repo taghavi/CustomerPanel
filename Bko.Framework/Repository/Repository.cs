@@ -76,7 +76,21 @@ namespace Framework.Repository
             if (page != null && pageSize != null)
             {
                 //برای پارامتریک کردن کویری سمت اس کیو ال به اسکیپ و تیک باید اکسپرژن داد تا پلن اگزکیوت کش شود
-                int resultsToSkip = (page - 1) * pageSize;
+                int resultsToSkip;
+
+                try
+                {
+                    check
+                    {
+                        resultsToSkip = (page - 1) * pageSize;
+                    }
+                        
+                }
+                catch(Exception)
+                {
+                    resultsToSkip = 0
+                }
+
                 query = query
                     .Skip(() => resultsToSkip)
                     .Take(() => pageSize);
