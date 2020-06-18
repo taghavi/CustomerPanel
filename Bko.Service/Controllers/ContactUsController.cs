@@ -101,7 +101,8 @@ namespace Bko.Service.Controllers
                 SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
                 SmtpServer.UseDefaultCredentials = false;
                 SmtpServer.Credentials = new System.Net.NetworkCredential("database@mobtakerancell.ir", "123456");
-                SmtpServer.EnableSsl = false;
+               // SmtpServer.EnableSsl = false;
+                SmtpServer.EnableSsl = true;
 
                 if (attachedFiles.Count > 0)
                     foreach (var attachedFile in attachedFiles)
