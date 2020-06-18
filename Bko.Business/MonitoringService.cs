@@ -13,6 +13,7 @@ namespace Bko.Business
         {
             //  MonitoringService srv=new MonitoringService();
             MonitorinSrvClient client = new MonitorinSrvClient();
+            client.dispose();
             if (bId == null)
                 return null;
             return null;
